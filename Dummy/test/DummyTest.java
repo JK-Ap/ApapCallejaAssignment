@@ -50,4 +50,11 @@ public class DummyTest {
         assertEquals("Joe", d.getName());
     }
     
+    @Test
+    public void test_getNameFail() {
+        
+        d.dummySetter("Joe");
+        assertEquals("Henry", d.getName());
+    }
+    
 }
