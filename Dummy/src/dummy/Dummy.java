@@ -11,15 +11,24 @@ public class Dummy {
         age = 0;
     }
     
-    public void dummySetter(String input) {
+    public void setName(String input) {
         
-        name = input;
+        name = input;   
+    }
+    
+    public void setAge(int input) {
         
+        age = input;
     }
     
     public String getName() {
         
         return this.name;
+    }
+    
+    public int getAge() {
+        
+        return this.age;
     }
     
 }

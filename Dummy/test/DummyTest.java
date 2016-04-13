@@ -46,15 +46,22 @@ public class DummyTest {
     @Test
     public void test_getName() {
         
-        d.dummySetter("Joe");
+        d.setName("Joe");
         assertEquals("Joe", d.getName());
     }
     
     @Test
     public void test_getNameFail() {
         
-        d.dummySetter("Joe");
+        d.setName("Joe");
         assertEquals("Henry", d.getName());
+    }
+    
+    @Test
+    public void test_getAge() {
+        
+        d.setAge(18);
+        assertEquals(18, d.getAge());
     }
     
 }
