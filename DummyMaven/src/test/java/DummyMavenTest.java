@@ -1,21 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import com.mycompany.dummymaven.MavenDummy;
 import org.junit.After;
-//import org.junit.AfterClass;
 import org.junit.Before;
-//import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Ze_Ge_000
- */
 public class DummyMavenTest {
     
     public DummyMavenTest() {
@@ -40,6 +28,20 @@ public class DummyMavenTest {
         
        md.setName("Joe");
        assertEquals("Joe", md.getName());
+    }
+    
+//    @Test
+//    public void test_getNameFail() {
+//        
+//        md.setName("Joe");
+//        assertEquals("Henry", md.getName());
+//    }
+    
+    @Test
+    public void test_getAge() {
+        
+        md.setAge(18);
+        assertEquals(18, md.getAge());
     }
     
 }
