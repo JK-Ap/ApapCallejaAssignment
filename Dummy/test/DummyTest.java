@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 //import org.junit.BeforeClass;
 import org.junit.Test;
-//import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -41,6 +41,13 @@ public class DummyTest {
     public void tearDown() {
         
         d = null;
+    }
+    
+    @Test
+    public void test_getName() {
+        
+        d.dummySetter("Joe");
+        assertEquals("Joe", d.getName());
     }
     
 }
