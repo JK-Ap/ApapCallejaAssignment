@@ -44,4 +44,11 @@ public class DummyMavenTest {
         assertEquals(18, md.getAge());
     }
     
+    @Test
+    public void test_getAge2() {
+        
+        md.setAge(22);
+        assertEquals(22, md.getAge());
+    }
+    
 }
