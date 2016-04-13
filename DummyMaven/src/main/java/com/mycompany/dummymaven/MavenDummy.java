@@ -15,9 +15,19 @@ public class MavenDummy {
         
         name = input;   
     }
+    
+    public void setAge(int input) {
+        
+        age = input;
+    }
         
     public String getName() {
         
         return this.name;
+    }
+    
+    public int getAge() {
+        
+        return this.age;
     }
 }
