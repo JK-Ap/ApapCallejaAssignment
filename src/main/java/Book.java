@@ -6,13 +6,16 @@ public class Book
     int year_of_pub;
     int edition;
     User loaned;
+    int id;
     
-    protected Book(String t, String a, Genre g, int y, int e)
+    protected Book(String t, String a, Genre g, int y, int e, int i)
     {
         title = t;
         author = a;
         genre = g;
         year_of_pub =y;
         edition = e;
+        id = i;
+        loaned = null;
     }
 }
