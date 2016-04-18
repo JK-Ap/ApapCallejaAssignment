@@ -7,16 +7,18 @@
     int edition;
     User loaned;
     int id;
+    boolean isLoaned;
     
     protected Book(String t, String a, Genre g, int y, int e, int i)
-<span class="fc" id="L12">    {</span>
-<span class="fc" id="L13">        title = t;</span>
-<span class="fc" id="L14">        author = a;</span>
-<span class="fc" id="L15">        genre = g;</span>
-<span class="fc" id="L16">        year_of_pub =y;</span>
-<span class="fc" id="L17">        edition = e;</span>
-<span class="fc" id="L18">        id = i;</span>
-<span class="fc" id="L19">        loaned = null;</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L13">    {</span>
+<span class="fc" id="L14">        title = t;</span>
+<span class="fc" id="L15">        author = a;</span>
+<span class="fc" id="L16">        genre = g;</span>
+<span class="fc" id="L17">        year_of_pub =y;</span>
+<span class="fc" id="L18">        edition = e;</span>
+<span class="fc" id="L19">        id = i;</span>
+<span class="fc" id="L20">        loaned = null;</span>
+<span class="fc" id="L21">        isLoaned = false;</span>
+<span class="fc" id="L22">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
