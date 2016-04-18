@@ -10,12 +10,14 @@ public class MainTest
     {
     }
     Book b;
-    User person = new User("Mark", 1);
-    Genre fiction = new Genre("FICTION", "a fiction book");
+    User person;
+    Genre fiction;
     
     @Before
     public void setUp() 
     {
+        person = new User("Mark", 1);
+        fiction = new Genre("FICTION", "a fiction book");
         b = new Book("Book1","Author1",fiction,1995,1,1);
     }
     
@@ -23,6 +25,8 @@ public class MainTest
     public void tearDown() 
     {
         b = null;
+        person = null;
+        fiction = null;
     }
    
     @Test
@@ -34,5 +38,12 @@ public class MainTest
         assertEquals(1995, b.year_of_pub);
         assertEquals(1,b.edition);
         assertEquals(1,b.id);
+    }
+    
+    @Test
+    public void testGenreConstructor()
+    {
+        assertEquals("FICTION", fiction.name);
+        assertEquals("a fiction book", fiction.desc);
     }
 }
