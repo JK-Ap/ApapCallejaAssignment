@@ -74,6 +74,9 @@ public class MainTest
     }
     
     @Test
+    /*
+    Testing correct input for allowUser()
+    */
     public void testCorrectUser()
     {
         l.addUser(person);
@@ -82,4 +85,24 @@ public class MainTest
         
         assertEquals(users, l.users);
     }
+    
+    @Test
+    /**
+     * Testing a duplicate id entry in addUser()
+     */
+    public void testIncorrectUser()
+    {
+        //this test will attempt to add 2 values to the list but only 1
+        //will be added since it is a duplicate
+        //Upon comparing the above with the below arraylist
+        //The test will result in a success since both lists have a size of 1
+        l.addUser(person);
+        l.addUser(dup_id);
+        
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(person);
+        
+        assertEquals(users, l.users);
+    }
+    
 }

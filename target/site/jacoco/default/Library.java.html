@@ -16,10 +16,10 @@ public class Library
     
     public void addUser(User newUser)
     {
-<span class="pc bpc" id="L19" title="1 of 2 branches missed.">        for(User u : users)</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        for(User u : users)</span>
         {
-<span class="nc bnc" id="L21" title="All 2 branches missed.">            if(u.id == newUser.id)</span>
-<span class="nc" id="L22">                return;</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
+<span class="fc" id="L22">                return;</span>
 <span class="nc" id="L23">        }</span>
 <span class="fc" id="L24">        users.add(newUser);</span>
 <span class="fc" id="L25">    }</span>
