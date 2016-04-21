@@ -242,4 +242,59 @@ public class MainTest
         assertEquals(c.searchByTitle("dummy"), testList);
     }
     
+    @Test
+    /**
+     * Testing Catalogue searchByGenre()
+     */
+    public void testGetBooksByGenre()
+    {     
+        //only books 2 and 4 are of the nonficiton genre so the function should
+        //return an ArrayList containing those items
+        Genre nonfiction = new Genre("NONFICTION","Non-fiction books");
+        
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2015,1,1);
+        Book book2 = new Book("Dummy","Author1",nonfiction,2015,2,2);
+        Book book3 = new Book("Title","Author1",fiction,2015,3,3);
+        Book book4 = new Book("AdummyA","Author1",nonfiction,2015,4,4);
+        Book book5 = new Book("DummmyTitle","Author1",fiction,2015,5,5);
+        l.addBook(book1);
+        l.addBook(book2);
+        l.addBook(book3);
+        l.addBook(book4);
+        l.addBook(book5);
+        
+        ArrayList<Book> testList = new ArrayList<Book>();
+        testList.add(book2);
+        testList.add(book4);
+        
+        assertEquals(c.searchByGenre(nonfiction), testList);
+    }
+    
+    @Test
+    /**
+     * Testing Catalogue searchByYearOfPublication()
+     */
+    public void testGetBooksByYear()
+    {     
+        //only books 1 and 5 are of the nonficiton genre so the function should
+        //return an ArrayList containing those items
+
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
+        Book book2 = new Book("Dummy","Author1",fiction,2015,2,2);
+        Book book3 = new Book("Title","Author1",fiction,2015,3,3);
+        Book book4 = new Book("AdummyA","Author1",fiction,2015,4,4);
+        Book book5 = new Book("DummmyTitle","Author1",fiction,2016,5,5);
+        l.addBook(book1);
+        l.addBook(book2);
+        l.addBook(book3);
+        l.addBook(book4);
+        l.addBook(book5);
+        
+        ArrayList<Book> testList = new ArrayList<Book>();
+        testList.add(book1);
+        testList.add(book5);
+        
+        assertEquals(c.searchByYearOfPublication(2016), testList);
+    }
+    
 }
