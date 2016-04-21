@@ -10,9 +10,32 @@ public class Catalogue
 <span class="fc" id="L10">        lib = l;</span>
 <span class="fc" id="L11">    }</span>
     
+    /**
+     * @return the books found in Library
+     */
     protected ArrayList&lt;Book&gt; getAllBooks()
     {
-<span class="fc" id="L15">        return lib.books;</span>
+<span class="fc" id="L18">        return lib.books;</span>
     }
+    
+    /**
+     * gets all the books in the library whose title contains a specific string
+     * @param title string to be used to compare
+     * @return the filtered list of books
+     */
+    protected ArrayList&lt;Book&gt; searchByTitle(String title)
+    {
+<span class="fc" id="L28">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        for(Book book: lib.books)</span>
+        {
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            if(book.title.toLowerCase().contains(title.toLowerCase()))</span>
+            {
+<span class="fc" id="L33">                filtered.add(book);</span>
+            }
+<span class="fc" id="L35">        }</span>
+<span class="fc" id="L36">        return filtered;</span>
+    }
+    
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

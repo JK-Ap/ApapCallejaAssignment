@@ -215,4 +215,31 @@ public class MainTest
         assertEquals(c.getAllBooks(), l.books);
     }
     
+    @Test
+    /**
+     * Testing Catalogue searchByTitle()
+     */
+    public void testGetBooksByTitle()
+    {     
+        //only books 1 2 and 4 contain the word "dummy" in them so the function should
+        //return an ArrayList containing those items
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2015,1,1);
+        Book book2 = new Book("Dummy","Author1",fiction,2015,2,2);
+        Book book3 = new Book("Title","Author1",fiction,2015,3,3);
+        Book book4 = new Book("AdummyA","Author1",fiction,2015,4,4);
+        Book book5 = new Book("DummmyTitle","Author1",fiction,2015,5,5);
+        l.addBook(book1);
+        l.addBook(book2);
+        l.addBook(book3);
+        l.addBook(book4);
+        l.addBook(book5);
+        
+        ArrayList<Book> testList = new ArrayList<Book>();
+        testList.add(book1);
+        testList.add(book2);
+        testList.add(book4);
+        
+        assertEquals(c.searchByTitle("dummy"), testList);
+    }
+    
 }
