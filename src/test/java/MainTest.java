@@ -133,4 +133,39 @@ public class MainTest
         assertEquals(false, l.removeUser(otherUser));
     }
     
+    @Test
+    /*
+    Testing valid entry of a genre by comparing the instance's arraylist
+    to an arraylist with that genre added already
+    */
+    public void testCorrectGenre()
+    {
+        l.addGenre(fiction);
+        ArrayList<Genre> genres = new ArrayList<Genre>();
+        genres.add(fiction);
+        
+        assertEquals(genres, l.genres);
+    }
+    
+    @Test
+    /**
+     * Testing adding a genre with an entry in the list already having the same name
+     */
+    public void testDuplicateGenre()
+    {
+        //this test will attempt to add 2 values to the list but only 1
+        //will be added since it has a duplicate name
+        //Upon comparing the above with the below arraylist
+        //The test will result in a success since both lists have a size of 1
+        
+        Genre dup_genre = new Genre("FICTION","A fiction book as well");
+        l.addGenre(fiction);
+        l.addGenre(dup_genre);
+        
+        ArrayList<Genre> testList = new ArrayList<Genre>();
+        testList.add(fiction);
+        
+        assertEquals(testList, l.genres);
+    }
+    
 }

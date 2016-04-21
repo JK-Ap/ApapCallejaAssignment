@@ -14,6 +14,7 @@ public class Library
         genres = new ArrayList<Genre>();
     }
     
+    //adds a user to the users list 
     public void addUser(User newUser)
     {
         for(User u : users)
@@ -30,6 +31,7 @@ public class Library
         return;
     }
     
+    //removes a user from the users list (if present)
     public boolean removeUser(User toDelete)
     {
         if(users.contains(toDelete))
@@ -44,4 +46,21 @@ public class Library
             return false;
         }
     }
+    
+    //adds a genre to the genres list 
+    public void addGenre(Genre newGenre)
+    {
+        for(Genre g : genres)
+        {
+            if(g.name.equals(newGenre.name))
+            {
+                System.out.println("Duplicate genre");
+                return;
+            }             
+        }
+        genres.add(newGenre);
+        System.out.println("Genre Added");
+        return;
+    }
+    
 }

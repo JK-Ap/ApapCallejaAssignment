@@ -4,6 +4,7 @@ public class Runner
     {
         Library l = new Library();
         Genre fiction = new Genre("FICTION","A fiction book");
+        Genre fiction2 = new Genre("FICTION","A fiction book as well");
         User u1 = new User("Mark",1);
         User u2 = new User("Tony",2);
         User u3 = new User("John",1);
@@ -16,6 +17,8 @@ public class Runner
         l.removeUser(u3);
         l.removeUser(u1);
         l.removeUser(u1);
+        l.addGenre(fiction);
+        l.addGenre(fiction2);
     }
     
 }

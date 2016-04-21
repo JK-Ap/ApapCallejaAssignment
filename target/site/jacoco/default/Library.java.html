@@ -14,35 +14,54 @@ public class Library
 <span class="fc" id="L14">        genres = new ArrayList&lt;Genre&gt;();</span>
 <span class="fc" id="L15">    }</span>
     
+    //adds a user to the users list 
     public void addUser(User newUser)
     {
-<span class="fc bfc" id="L19" title="All 2 branches covered.">        for(User u : users)</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for(User u : users)</span>
         {
-<span class="pc bpc" id="L21" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
             {
-<span class="fc" id="L23">                System.out.println(&quot;Duplicate user&quot;);</span>
-<span class="fc" id="L24">                return;</span>
+<span class="fc" id="L24">                System.out.println(&quot;Duplicate user&quot;);</span>
+<span class="fc" id="L25">                return;</span>
             }
                 
-<span class="nc" id="L27">        }</span>
-<span class="fc" id="L28">        users.add(newUser);</span>
-<span class="fc" id="L29">        System.out.println(&quot;User Added&quot;);</span>
-<span class="fc" id="L30">        return;</span>
+<span class="nc" id="L28">        }</span>
+<span class="fc" id="L29">        users.add(newUser);</span>
+<span class="fc" id="L30">        System.out.println(&quot;User Added&quot;);</span>
+<span class="fc" id="L31">        return;</span>
     }
     
+    //removes a user from the users list (if present)
     public boolean removeUser(User toDelete)
     {
-<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(users.contains(toDelete))</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(users.contains(toDelete))</span>
         {
-<span class="fc" id="L37">            System.out.println(toDelete.name +&quot; has been removed&quot;);</span>
-<span class="fc" id="L38">            users.remove(toDelete);</span>
-<span class="fc" id="L39">            return true;</span>
+<span class="fc" id="L39">            System.out.println(toDelete.name +&quot; has been removed&quot;);</span>
+<span class="fc" id="L40">            users.remove(toDelete);</span>
+<span class="fc" id="L41">            return true;</span>
         }
         else
         {
-<span class="fc" id="L43">            System.out.println(&quot;User not found&quot;);</span>
-<span class="fc" id="L44">            return false;</span>
+<span class="fc" id="L45">            System.out.println(&quot;User not found&quot;);</span>
+<span class="fc" id="L46">            return false;</span>
         }
     }
+    
+    //adds a genre to the genres list 
+    public void addGenre(Genre newGenre)
+    {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for(Genre g : genres)</span>
+        {
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if(g.name.equals(newGenre.name))</span>
+            {
+<span class="fc" id="L57">                System.out.println(&quot;Duplicate genre&quot;);</span>
+<span class="fc" id="L58">                return;</span>
+            }             
+<span class="nc" id="L60">        }</span>
+<span class="fc" id="L61">        genres.add(newGenre);</span>
+<span class="fc" id="L62">        System.out.println(&quot;Genre Added&quot;);</span>
+<span class="fc" id="L63">        return;</span>
+    }
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
