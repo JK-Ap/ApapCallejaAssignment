@@ -63,4 +63,21 @@ public class Library
         return;
     }
     
+    //adds a book to the books list 
+    public void addBook(Book newBook)
+    {
+        for(Book b : books)
+        {
+            if(b.id == newBook.id)
+            {
+                System.out.println("Duplicate book");
+                return;
+            }
+                
+        }
+        books.add(newBook);
+        System.out.println("Book Added");
+        return;
+    }
+    
 }

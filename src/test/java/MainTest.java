@@ -78,7 +78,7 @@ public class MainTest
     public void testCorrectUser()
     {
         l.addUser(person);
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
         users.add(person);
         
         assertEquals(users, l.users);
@@ -93,13 +93,13 @@ public class MainTest
         //this test will attempt to add 2 values to the list but only 1
         //will be added since it is a duplicate
         //Upon comparing the above with the below arraylist
-        //The test will result in a success since both lists have a size of 1
+        //The test will result in a success since both lists are equal
         
         User dup_id = new User("John",1);
         l.addUser(person);
         l.addUser(dup_id);
         
-        ArrayList<User> testList = new ArrayList<User>();
+        ArrayList<User> testList = new ArrayList<>();
         testList.add(person);
         
         assertEquals(testList, l.users);
@@ -115,7 +115,7 @@ public class MainTest
         //the library has had only a single user entered and deleted from the library
         l.addUser(person);
         
-        ArrayList<User> testList = new ArrayList<User>();
+        ArrayList<User> testList = new ArrayList<>();
         l.removeUser(person);
         
         assertEquals(testList, l.users);
@@ -141,10 +141,10 @@ public class MainTest
     public void testCorrectGenre()
     {
         l.addGenre(fiction);
-        ArrayList<Genre> genres = new ArrayList<Genre>();
-        genres.add(fiction);
+        ArrayList<Genre> genresTest = new ArrayList<>();
+        genresTest.add(fiction);
         
-        assertEquals(genres, l.genres);
+        assertEquals(genresTest, l.genres);
     }
     
     @Test
@@ -156,16 +156,51 @@ public class MainTest
         //this test will attempt to add 2 values to the list but only 1
         //will be added since it has a duplicate name
         //Upon comparing the above with the below arraylist
-        //The test will result in a success since both lists have a size of 1
+        //The test will result in a success since both lists are equal
         
         Genre dup_genre = new Genre("FICTION","A fiction book as well");
         l.addGenre(fiction);
         l.addGenre(dup_genre);
         
-        ArrayList<Genre> testList = new ArrayList<Genre>();
+        ArrayList<Genre> testList = new ArrayList<>();
         testList.add(fiction);
         
         assertEquals(testList, l.genres);
+    }
+    
+    @Test
+    /*
+    Testing valid entry of a book by comparing the instance's arraylist
+    to an arraylist with that book added already
+    */
+    public void testCorrectBook()
+    {
+        l.addBook(b);
+        ArrayList<Book> booksTest = new ArrayList<>();
+        booksTest.add(b);
+        
+        assertEquals(booksTest, l.books);
+    }
+    
+    @Test
+    /**
+     * Testing adding a book with duplicate id
+     */
+    public void testDuplicateBook()
+    {
+        //this test will attempt to add 2 values to the list but only 1
+        //will be added since it has a duplicate id
+        //Upon comparing the above with the below arraylist
+        //The test will result in a success since both lists are equal
+        
+        Book dup_book = new Book("Book2","Author1",fiction,2015,1,1);
+        l.addBook(b);
+        l.addBook(dup_book);
+        
+        ArrayList<Book> testList = new ArrayList<>();
+        testList.add(b);
+        
+        assertEquals(testList, l.books);
     }
     
 }

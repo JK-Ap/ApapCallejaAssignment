@@ -10,6 +10,7 @@ public class Runner
         User u3 = new User("John",1);
         
         Book b = new Book("Book1","Author1",fiction,1995,1,1);
+        Book b2 = new Book("Book11","Author10",fiction,2016,1,1);
         
         l.addUser(u1);
         l.addUser(u2);
@@ -19,6 +20,8 @@ public class Runner
         l.removeUser(u1);
         l.addGenre(fiction);
         l.addGenre(fiction2);
+        l.addBook(b);
+        l.addBook(b2);
     }
     
 }

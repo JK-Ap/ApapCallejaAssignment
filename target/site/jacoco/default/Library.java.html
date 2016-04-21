@@ -63,5 +63,22 @@ public class Library
 <span class="fc" id="L63">        return;</span>
     }
     
+    //adds a book to the books list 
+    public void addBook(Book newBook)
+    {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        for(Book b : books)</span>
+        {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">            if(b.id == newBook.id)</span>
+            {
+<span class="fc" id="L73">                System.out.println(&quot;Duplicate book&quot;);</span>
+<span class="fc" id="L74">                return;</span>
+            }
+                
+<span class="nc" id="L77">        }</span>
+<span class="fc" id="L78">        books.add(newBook);</span>
+<span class="fc" id="L79">        System.out.println(&quot;Book Added&quot;);</span>
+<span class="fc" id="L80">        return;</span>
+    }
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
