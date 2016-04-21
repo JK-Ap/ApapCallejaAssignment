@@ -5,7 +5,7 @@ public class Catalogue
 {
     Library lib;
     
-    protected Catalogue(Library l)
+    public Catalogue(Library l)
 <span class="fc" id="L9">    {</span>
 <span class="fc" id="L10">        lib = l;</span>
 <span class="fc" id="L11">    }</span>
@@ -13,7 +13,7 @@ public class Catalogue
     /**
      * @return the books found in Library
      */
-    protected ArrayList&lt;Book&gt; getAllBooks()
+    public ArrayList&lt;Book&gt; getAllBooks()
     {
 <span class="fc" id="L18">        return lib.books;</span>
     }
@@ -23,7 +23,7 @@ public class Catalogue
      * @param title string to be used to compare
      * @return the filtered list of books
      */
-    protected ArrayList&lt;Book&gt; searchByTitle(String title)
+    public ArrayList&lt;Book&gt; searchByTitle(String title)
     {
 <span class="fc" id="L28">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
 <span class="fc bfc" id="L29" title="All 2 branches covered.">        for(Book book: lib.books)</span>
@@ -41,7 +41,7 @@ public class Catalogue
      * @param g Genre object to be used
      * @return the filtered list of books
      */
-    protected ArrayList&lt;Book&gt; searchByGenre(Genre g)
+    public ArrayList&lt;Book&gt; searchByGenre(Genre g)
     {
 <span class="fc" id="L46">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
 <span class="fc bfc" id="L47" title="All 2 branches covered.">        for(Book book: lib.books)</span>
@@ -59,7 +59,7 @@ public class Catalogue
      * @param year used for filter
      * @return the filtered list of books
      */
-    protected ArrayList&lt;Book&gt; searchByYearOfPublication(int year)
+    public ArrayList&lt;Book&gt; searchByYearOfPublication(int year)
     {
 <span class="fc" id="L64">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
 <span class="fc bfc" id="L65" title="All 2 branches covered.">        for(Book book: lib.books)</span>

@@ -5,7 +5,7 @@ public class Catalogue
 {
     Library lib;
     
-    protected Catalogue(Library l)
+    public Catalogue(Library l)
     {
         lib = l;
     }
@@ -13,7 +13,7 @@ public class Catalogue
     /**
      * @return the books found in Library
      */
-    protected ArrayList<Book> getAllBooks()
+    public ArrayList<Book> getAllBooks()
     {
         return lib.books;
     }
@@ -23,7 +23,7 @@ public class Catalogue
      * @param title string to be used to compare
      * @return the filtered list of books
      */
-    protected ArrayList<Book> searchByTitle(String title)
+    public ArrayList<Book> searchByTitle(String title)
     {
         ArrayList<Book> filtered = new ArrayList<Book>();
         for(Book book: lib.books)
@@ -41,7 +41,7 @@ public class Catalogue
      * @param g Genre object to be used
      * @return the filtered list of books
      */
-    protected ArrayList<Book> searchByGenre(Genre g)
+    public ArrayList<Book> searchByGenre(Genre g)
     {
         ArrayList<Book> filtered = new ArrayList<Book>();
         for(Book book: lib.books)
@@ -59,7 +59,7 @@ public class Catalogue
      * @param year used for filter
      * @return the filtered list of books
      */
-    protected ArrayList<Book> searchByYearOfPublication(int year)
+    public ArrayList<Book> searchByYearOfPublication(int year)
     {
         ArrayList<Book> filtered = new ArrayList<Book>();
         for(Book book: lib.books)

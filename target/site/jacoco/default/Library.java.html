@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Library.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dummy</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Library.java</span></div><h1>Library.java</h1><pre class="source lang-java linenums">
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Library 
 {
@@ -7,78 +10,107 @@ public class Library
     ArrayList&lt;Book&gt; books;
     ArrayList&lt;Genre&gt; genres;
     
-    protected Library()
-<span class="fc" id="L11">    {</span>
-<span class="fc" id="L12">        users = new ArrayList&lt;User&gt;();</span>
-<span class="fc" id="L13">        books = new ArrayList&lt;Book&gt;();</span>
-<span class="fc" id="L14">        genres = new ArrayList&lt;Genre&gt;();</span>
-<span class="fc" id="L15">    }</span>
+    public Library()
+<span class="fc" id="L14">    {</span>
+<span class="fc" id="L15">        users = new ArrayList&lt;User&gt;();</span>
+<span class="fc" id="L16">        books = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L17">        genres = new ArrayList&lt;Genre&gt;();</span>
+<span class="fc" id="L18">    }</span>
     
     //adds a user to the users list 
-    protected void addUser(User newUser)
+    public void addUser(User newUser)
     {
-<span class="fc bfc" id="L20" title="All 2 branches covered.">        for(User u : users)</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for(User u : users)</span>
         {
-<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
             {
-<span class="fc" id="L24">                System.out.println(&quot;Duplicate user&quot;);</span>
-<span class="fc" id="L25">                return;</span>
+<span class="fc" id="L27">                System.out.println(&quot;Duplicate user&quot;);</span>
+<span class="fc" id="L28">                return;</span>
             }
                 
-<span class="nc" id="L28">        }</span>
-<span class="fc" id="L29">        users.add(newUser);</span>
-<span class="fc" id="L30">        System.out.println(&quot;User Added&quot;);</span>
-<span class="fc" id="L31">        return;</span>
+<span class="nc" id="L31">        }</span>
+<span class="fc" id="L32">        users.add(newUser);</span>
+<span class="fc" id="L33">        System.out.println(&quot;User Added&quot;);</span>
+<span class="fc" id="L34">        return;</span>
     }
     
     //removes a user from the users list (if present)
-    protected boolean removeUser(User toDelete)
+    public boolean removeUser(User toDelete)
     {
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(users.contains(toDelete))</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if(users.contains(toDelete))</span>
         {
-<span class="fc" id="L39">            System.out.println(toDelete.name +&quot; has been removed&quot;);</span>
-<span class="fc" id="L40">            users.remove(toDelete);</span>
-<span class="fc" id="L41">            return true;</span>
+<span class="fc" id="L42">            System.out.println(toDelete.name +&quot; has been removed&quot;);</span>
+<span class="fc" id="L43">            users.remove(toDelete);</span>
+<span class="fc" id="L44">            return true;</span>
         }
         else
         {
-<span class="fc" id="L45">            System.out.println(&quot;User not found&quot;);</span>
-<span class="fc" id="L46">            return false;</span>
+<span class="fc" id="L48">            System.out.println(&quot;User not found&quot;);</span>
+<span class="fc" id="L49">            return false;</span>
         }
     }
     
     //adds a genre to the genres list 
-    protected void addGenre(Genre newGenre)
+    public void addGenre(Genre newGenre)
     {
-<span class="fc bfc" id="L53" title="All 2 branches covered.">        for(Genre g : genres)</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        for(Genre g : genres)</span>
         {
-<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if(g.name.equals(newGenre.name))</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">            if(g.name.equals(newGenre.name))</span>
             {
-<span class="fc" id="L57">                System.out.println(&quot;Duplicate genre&quot;);</span>
-<span class="fc" id="L58">                return;</span>
+<span class="fc" id="L60">                System.out.println(&quot;Duplicate genre&quot;);</span>
+<span class="fc" id="L61">                return;</span>
             }             
-<span class="nc" id="L60">        }</span>
-<span class="fc" id="L61">        genres.add(newGenre);</span>
-<span class="fc" id="L62">        System.out.println(&quot;Genre Added&quot;);</span>
-<span class="fc" id="L63">        return;</span>
+<span class="nc" id="L63">        }</span>
+<span class="fc" id="L64">        genres.add(newGenre);</span>
+<span class="fc" id="L65">        System.out.println(&quot;Genre Added&quot;);</span>
+<span class="fc" id="L66">        return;</span>
     }
     
     //adds a book to the books list 
-    protected void addBook(Book newBook)
+    public void addBook(Book newBook)
     {
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        for(Book b : books)</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        for(Book b : books)</span>
         {
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            if(b.id == newBook.id)</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if(b.id == newBook.id)</span>
             {
-<span class="fc" id="L73">                System.out.println(&quot;Duplicate book&quot;);</span>
-<span class="fc" id="L74">                return;</span>
+<span class="fc" id="L76">                System.out.println(&quot;Duplicate book&quot;);</span>
+<span class="fc" id="L77">                return;</span>
             }
                 
-<span class="fc" id="L77">        }</span>
-<span class="fc" id="L78">        books.add(newBook);</span>
-<span class="fc" id="L79">        System.out.println(&quot;Book Added&quot;);</span>
-<span class="fc" id="L80">        return;</span>
+<span class="fc" id="L80">        }</span>
+<span class="fc" id="L81">        books.add(newBook);</span>
+<span class="fc" id="L82">        System.out.println(&quot;Book Added&quot;);</span>
+<span class="fc" id="L83">        return;</span>
     }
+    
+    
+    public String loanBookTo(Book book_loaned, User to_user, Date c)
+    {
+        //user and books must be in the library
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        if(!users.contains(to_user))</span>
+<span class="nc" id="L91">            return(&quot;User does not exist&quot;);</span>
+        
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if(!books.contains(book_loaned))</span>
+<span class="nc" id="L94">            return (&quot;Book does not exist&quot;);</span>
+        
+        //user must have not more than 3 books
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if(to_user.list.size()&gt;2)</span>
+<span class="nc" id="L98">            return (&quot;User has already loaned 3 books&quot;);</span>
+
+        //each date when compared to the current date must be &lt;4weeks
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        for(Date each_date: to_user.dates)</span>
+        {
+<span class="nc" id="L103">            long diff = c.getTime() - each_date.getTime();</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)&gt;28)</span>
+<span class="nc" id="L105">                return (&quot;Overdue&quot;);             </span>
+<span class="nc" id="L106">        }</span>
+        
+        //otherwise it is added to the user's ArrayLists
+<span class="fc" id="L109">        to_user.list.add(book_loaned);</span>
+<span class="fc" id="L110">        to_user.dates.add(c);</span>
+<span class="fc" id="L111">        return &quot;book loaned&quot;;</span>
+    }   
+
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

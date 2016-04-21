@@ -1,5 +1,8 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -295,6 +298,29 @@ public class MainTest
         testList.add(book5);
         
         assertEquals(c.searchByYearOfPublication(2016), testList);
+    }
+    
+    @Test
+    /**
+     * Testing Library loanBookTo by checknig its string return value
+     */
+    public void testCorrectLoan()
+    {     
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,9,9);
+        l.addBook(book1);
+        User user1 = new User("Matthew",5);
+        l.addUser(user1);
+        
+        String inputString1 = "21 04 2016";
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy"); 
+        try 
+        {
+            Date date1 = myFormat.parse(inputString1);
+            assertEquals("book loaned", l.loanBookTo(book1, user1, date1));
+        }
+        catch (ParseException e) 
+        {
+        } 
     }
     
 }

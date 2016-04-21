@@ -7,7 +7,7 @@ class Genre
     String name;
     String desc;
     
-    protected Genre(String n, String d)
+    public Genre(String n, String d)
     {
         name = n;
         desc = d;

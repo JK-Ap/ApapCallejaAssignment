@@ -1,9 +1,13 @@
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Runner 
 {
-    public static void main(String args[])
+    public static void main(String args[]) throws ParseException
     {
         Library l = new Library();
         Genre fiction = new Genre("FICTION","A fiction book");
@@ -25,7 +29,21 @@ public class Runner
         l.addGenre(fiction2);
         l.addBook(b);
         l.addBook(b2);
-       
+            
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy"); 
+        String inputString1 = "22 03 2016";
+        String inputString2 = "21 04 2016";
+
+        try 
+        {
+            Date date1 = myFormat.parse(inputString1);
+            Date date2 = myFormat.parse(inputString2);
+            System.out.println(l.loanBookTo(b, u2, date1));
+            System.out.println(l.loanBookTo(b, u2, date2));
+        }
+        catch (ParseException e) 
+        {
+        }
     }
     
 }

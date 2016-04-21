@@ -1,5 +1,8 @@
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Library 
 {
@@ -7,7 +10,7 @@ public class Library
     ArrayList<Book> books;
     ArrayList<Genre> genres;
     
-    protected Library()
+    public Library()
     {
         users = new ArrayList<User>();
         books = new ArrayList<Book>();
@@ -15,7 +18,7 @@ public class Library
     }
     
     //adds a user to the users list 
-    protected void addUser(User newUser)
+    public void addUser(User newUser)
     {
         for(User u : users)
         {
@@ -32,7 +35,7 @@ public class Library
     }
     
     //removes a user from the users list (if present)
-    protected boolean removeUser(User toDelete)
+    public boolean removeUser(User toDelete)
     {
         if(users.contains(toDelete))
         {
@@ -48,7 +51,7 @@ public class Library
     }
     
     //adds a genre to the genres list 
-    protected void addGenre(Genre newGenre)
+    public void addGenre(Genre newGenre)
     {
         for(Genre g : genres)
         {
@@ -64,7 +67,7 @@ public class Library
     }
     
     //adds a book to the books list 
-    protected void addBook(Book newBook)
+    public void addBook(Book newBook)
     {
         for(Book b : books)
         {
@@ -79,5 +82,34 @@ public class Library
         System.out.println("Book Added");
         return;
     }
+    
+    
+    public String loanBookTo(Book book_loaned, User to_user, Date c)
+    {
+        //user and books must be in the library
+        if(!users.contains(to_user))
+            return("User does not exist");
+        
+        if(!books.contains(book_loaned))
+            return ("Book does not exist");
+        
+        //user must have not more than 3 books
+        if(to_user.list.size()>2)
+            return ("User has already loaned 3 books");
+
+        //each date when compared to the current date must be <4weeks
+        for(Date each_date: to_user.dates)
+        {
+            long diff = c.getTime() - each_date.getTime();
+            if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)>28)
+                return ("Overdue");             
+        }
+        
+        //otherwise it is added to the user's ArrayLists
+        to_user.list.add(book_loaned);
+        to_user.dates.add(c);
+        return "book loaned";
+    }   
+
     
 }
