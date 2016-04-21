@@ -78,7 +78,7 @@ public class MainTest
     public void testCorrectUser()
     {
         l.addUser(person);
-        ArrayList<User> users = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<User>();
         users.add(person);
         
         assertEquals(users, l.users);
@@ -99,7 +99,7 @@ public class MainTest
         l.addUser(person);
         l.addUser(dup_id);
         
-        ArrayList<User> testList = new ArrayList<>();
+        ArrayList<User> testList = new ArrayList<User>();
         testList.add(person);
         
         assertEquals(testList, l.users);
@@ -115,7 +115,7 @@ public class MainTest
         //the library has had only a single user entered and deleted from the library
         l.addUser(person);
         
-        ArrayList<User> testList = new ArrayList<>();
+        ArrayList<User> testList = new ArrayList<User>();
         l.removeUser(person);
         
         assertEquals(testList, l.users);
@@ -141,7 +141,7 @@ public class MainTest
     public void testCorrectGenre()
     {
         l.addGenre(fiction);
-        ArrayList<Genre> genresTest = new ArrayList<>();
+        ArrayList<Genre> genresTest = new ArrayList<Genre>();
         genresTest.add(fiction);
         
         assertEquals(genresTest, l.genres);
@@ -162,7 +162,7 @@ public class MainTest
         l.addGenre(fiction);
         l.addGenre(dup_genre);
         
-        ArrayList<Genre> testList = new ArrayList<>();
+        ArrayList<Genre> testList = new ArrayList<Genre>();
         testList.add(fiction);
         
         assertEquals(testList, l.genres);
@@ -176,7 +176,7 @@ public class MainTest
     public void testCorrectBook()
     {
         l.addBook(b);
-        ArrayList<Book> booksTest = new ArrayList<>();
+        ArrayList<Book> booksTest = new ArrayList<Book>();
         booksTest.add(b);
         
         assertEquals(booksTest, l.books);
@@ -197,7 +197,7 @@ public class MainTest
         l.addBook(b);
         l.addBook(dup_book);
         
-        ArrayList<Book> testList = new ArrayList<>();
+        ArrayList<Book> testList = new ArrayList<Book>();
         testList.add(b);
         
         assertEquals(testList, l.books);
