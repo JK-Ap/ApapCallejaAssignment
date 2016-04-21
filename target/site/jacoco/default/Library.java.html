@@ -87,23 +87,23 @@ public class Library
     public String loanBookTo(Book book_loaned, User to_user, Date c)
     {
         //user and books must be in the library
-<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        if(!users.contains(to_user))</span>
-<span class="nc" id="L91">            return(&quot;User does not exist&quot;);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if(!users.contains(to_user))</span>
+<span class="fc" id="L91">            return(&quot;User does not exist&quot;);</span>
         
-<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if(!books.contains(book_loaned))</span>
-<span class="nc" id="L94">            return (&quot;Book does not exist&quot;);</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if(!books.contains(book_loaned))</span>
+<span class="fc" id="L94">            return (&quot;Book does not exist&quot;);</span>
         
         //user must have not more than 3 books
-<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if(to_user.list.size()&gt;2)</span>
-<span class="nc" id="L98">            return (&quot;User has already loaned 3 books&quot;);</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        if(to_user.list.size()&gt;2)</span>
+<span class="fc" id="L98">            return (&quot;User has already loaned 3 books&quot;);</span>
 
         //each date when compared to the current date must be &lt;4weeks
-<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        for(Date each_date: to_user.dates)</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for(Date each_date: to_user.dates)</span>
         {
-<span class="nc" id="L103">            long diff = c.getTime() - each_date.getTime();</span>
-<span class="nc bnc" id="L104" title="All 2 branches missed.">            if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)&gt;28)</span>
-<span class="nc" id="L105">                return (&quot;Overdue&quot;);             </span>
-<span class="nc" id="L106">        }</span>
+<span class="fc" id="L103">            long diff = c.getTime() - each_date.getTime();</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">            if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)&gt;28)</span>
+<span class="fc" id="L105">                return (&quot;Overdue&quot;);             </span>
+<span class="fc" id="L106">        }</span>
         
         //otherwise it is added to the user's ArrayLists
 <span class="fc" id="L109">        to_user.list.add(book_loaned);</span>
