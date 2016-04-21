@@ -22,13 +22,13 @@ public class Library
     {
 <span class="fc bfc" id="L23" title="All 2 branches covered.">        for(User u : users)</span>
         {
-<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">            if(u.id == newUser.id)</span>
             {
 <span class="fc" id="L27">                System.out.println(&quot;Duplicate user&quot;);</span>
 <span class="fc" id="L28">                return;</span>
             }
                 
-<span class="nc" id="L31">        }</span>
+<span class="fc" id="L31">        }</span>
 <span class="fc" id="L32">        users.add(newUser);</span>
 <span class="fc" id="L33">        System.out.println(&quot;User Added&quot;);</span>
 <span class="fc" id="L34">        return;</span>
@@ -93,24 +93,54 @@ public class Library
 <span class="fc bfc" id="L93" title="All 2 branches covered.">        if(!books.contains(book_loaned))</span>
 <span class="fc" id="L94">            return (&quot;Book does not exist&quot;);</span>
         
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        if(book_loaned.isLoaned)</span>
+<span class="fc" id="L97">            return (&quot;Book is already loaned&quot;);</span>
+        
         //user must have not more than 3 books
-<span class="fc bfc" id="L97" title="All 2 branches covered.">        if(to_user.list.size()&gt;2)</span>
-<span class="fc" id="L98">            return (&quot;User has already loaned 3 books&quot;);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if(to_user.list.size()&gt;2)</span>
+<span class="fc" id="L101">            return (&quot;User has already loaned 3 books&quot;);</span>
 
         //each date when compared to the current date must be &lt;4weeks
-<span class="fc bfc" id="L101" title="All 2 branches covered.">        for(Date each_date: to_user.dates)</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        for(Date each_date: to_user.dates)</span>
         {
-<span class="fc" id="L103">            long diff = c.getTime() - each_date.getTime();</span>
-<span class="fc bfc" id="L104" title="All 2 branches covered.">            if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)&gt;28)</span>
-<span class="fc" id="L105">                return (&quot;Overdue&quot;);             </span>
-<span class="fc" id="L106">        }</span>
+<span class="fc" id="L106">            long diff = c.getTime() - each_date.getTime();</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">            if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)&gt;28)</span>
+<span class="fc" id="L108">                return (&quot;Overdue&quot;);             </span>
+<span class="fc" id="L109">        }</span>
         
         //otherwise it is added to the user's ArrayLists
-<span class="fc" id="L109">        to_user.list.add(book_loaned);</span>
-<span class="fc" id="L110">        to_user.dates.add(c);</span>
-<span class="fc" id="L111">        return &quot;book loaned&quot;;</span>
+<span class="fc" id="L112">        to_user.list.add(book_loaned);</span>
+<span class="fc" id="L113">        to_user.dates.add(c);</span>
+<span class="fc" id="L114">        book_loaned.isLoaned = true;</span>
+<span class="fc" id="L115">        return &quot;book loaned&quot;;</span>
     }   
 
-    
+    public boolean returnBook(Book returned_book)
+    {
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if (!returned_book.isLoaned)</span>
+<span class="fc" id="L121">            return false;</span>
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        else if (!books.contains(returned_book))</span>
+<span class="nc" id="L123">            return false;</span>
+        else
+        {
+            //checks each book for each user
+            //if any of the books match, the book is removed along with its
+            //respective time in the dates ArrayList
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            for(User each_user: users)</span>
+            {
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">                for(int i =0; i&lt;each_user.list.size();i++)</span>
+                {
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">                    if(each_user.list.get(i) == returned_book)</span>
+                    {
+<span class="fc" id="L135">                        each_user.list.remove(i);</span>
+<span class="fc" id="L136">                        each_user.dates.remove(i);</span>
+<span class="fc" id="L137">                        break;</span>
+                    }
+                }
+<span class="fc" id="L140">            }</span>
+        }
+<span class="fc" id="L142">        returned_book.isLoaned = false;</span>
+<span class="fc" id="L143">        return true;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

@@ -93,6 +93,9 @@ public class Library
         if(!books.contains(book_loaned))
             return ("Book does not exist");
         
+        if(book_loaned.isLoaned)
+            return ("Book is already loaned");
+        
         //user must have not more than 3 books
         if(to_user.list.size()>2)
             return ("User has already loaned 3 books");
@@ -108,8 +111,35 @@ public class Library
         //otherwise it is added to the user's ArrayLists
         to_user.list.add(book_loaned);
         to_user.dates.add(c);
+        book_loaned.isLoaned = true;
         return "book loaned";
     }   
 
-    
+    public boolean returnBook(Book returned_book)
+    {
+        if (!returned_book.isLoaned)
+            return false;
+        else if (!books.contains(returned_book))
+            return false;
+        else
+        {
+            //checks each book for each user
+            //if any of the books match, the book is removed along with its
+            //respective time in the dates ArrayList
+            for(User each_user: users)
+            {
+                for(int i =0; i<each_user.list.size();i++)
+                {
+                    if(each_user.list.get(i) == returned_book)
+                    {
+                        each_user.list.remove(i);
+                        each_user.dates.remove(i);
+                        break;
+                    }
+                }
+            }
+        }
+        returned_book.isLoaned = false;
+        return true;
+    }
 }

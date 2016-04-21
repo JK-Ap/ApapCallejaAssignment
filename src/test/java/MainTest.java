@@ -395,7 +395,7 @@ public class MainTest
             l.loanBookTo(book1, user1, date1);
             l.loanBookTo(book2, user1, date1);
             l.loanBookTo(book3, user1, date1);
-            assertEquals("User has already loaned 3 books", l.loanBookTo(book1, user1, date1));
+            assertEquals("User has already loaned 3 books", l.loanBookTo(book4, user1, date1));
         }
         catch (ParseException e) 
         {
@@ -431,5 +431,104 @@ public class MainTest
         catch (ParseException e) 
         {
         }
+    }
+    
+    /**
+     * Tests loanBookto() for a book that is already loaned out
+     */
+    @Test
+    public void testBookAlreadyLoaned()
+    {
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
+        l.addBook(book1);
+        
+        User user1 = new User("Matthew",5);
+        l.addUser(user1);
+        
+        User user2 = new User("Carl",6);
+        l.addUser(user2);
+        
+        String inputString1 = "21 04 2016";
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy"); 
+        try 
+        {
+            Date date1 = myFormat.parse(inputString1);
+            assertEquals("book loaned",l.loanBookTo(book1, user1, date1));
+            assertEquals("Book is already loaned", l.loanBookTo(book1, user2, date1));
+        }
+        catch (ParseException e) 
+        {
+        }
+    }
+    
+    /**
+     * Tests a valid return of a book by checking that the book is no longer listed as loaned,
+     * the user no longer has the book or its date listed in its ArrayLists and the 
+     * function returned true
+     */
+    @Test
+    public void testValidReturn()
+    {
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
+        l.addBook(book1);
+        
+        User user1 = new User("Matthew",5);
+        l.addUser(user1);
+        
+        String inputString1 = "21 04 2016";
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy"); 
+        try 
+        {
+            Date date1 = myFormat.parse(inputString1);
+            l.loanBookTo(book1, user1, date1);
+        }
+        catch (ParseException e) 
+        {
+        }
+        assertEquals(true,l.returnBook(book1));
+        //tests are checked on user 1
+        assertEquals(0,user1.list.size());
+        assertEquals(0,user1.dates.size());
+        assertEquals(false,book1.isLoaned);
+    }
+    
+    /**
+     * Tests attempting to return a book is not added in the library lists
+     */
+    @Test
+    public void testReturnOfANonAddedBook()
+    {
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
+        
+        User user1 = new User("Matthew",5);
+        l.addUser(user1);
+        
+        String inputString1 = "21 04 2016";
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy"); 
+        try 
+        {
+            Date date1 = myFormat.parse(inputString1);
+            assertEquals("Book does not exist",l.loanBookTo(book1, user1, date1));
+        }
+        catch (ParseException e) 
+        {
+        }
+        assertEquals(false,l.returnBook(book1));
+        assertEquals(false,book1.isLoaned);
+    }
+    
+    /**
+     * Tests attempting to return a book that is not loaned to anyone
+     */
+    @Test
+    public void testReturnOfANonLoanedBook()
+    {
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
+        l.addBook(book1);
+        
+        User user1 = new User("Matthew",5);
+        l.addUser(user1);
+        
+        assertEquals(false,l.returnBook(book1));
     }
 }
