@@ -19,9 +19,30 @@ public class Library
 <span class="fc bfc" id="L19" title="All 2 branches covered.">        for(User u : users)</span>
         {
 <span class="pc bpc" id="L21" title="1 of 2 branches missed.">            if(u.id == newUser.id)</span>
-<span class="fc" id="L22">                return;</span>
-<span class="nc" id="L23">        }</span>
-<span class="fc" id="L24">        users.add(newUser);</span>
-<span class="fc" id="L25">    }</span>
+            {
+<span class="fc" id="L23">                System.out.println(&quot;Duplicate user&quot;);</span>
+<span class="fc" id="L24">                return;</span>
+            }
+                
+<span class="nc" id="L27">        }</span>
+<span class="fc" id="L28">        users.add(newUser);</span>
+<span class="fc" id="L29">        System.out.println(&quot;User Added&quot;);</span>
+<span class="fc" id="L30">        return;</span>
+    }
+    
+    public boolean removeUser(User toDelete)
+    {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(users.contains(toDelete))</span>
+        {
+<span class="fc" id="L37">            System.out.println(toDelete.name +&quot; has been removed&quot;);</span>
+<span class="fc" id="L38">            users.remove(toDelete);</span>
+<span class="fc" id="L39">            return true;</span>
+        }
+        else
+        {
+<span class="fc" id="L43">            System.out.println(&quot;User not found&quot;);</span>
+<span class="fc" id="L44">            return false;</span>
+        }
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

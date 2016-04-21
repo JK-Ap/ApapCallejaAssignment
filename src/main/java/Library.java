@@ -19,8 +19,29 @@ public class Library
         for(User u : users)
         {
             if(u.id == newUser.id)
+            {
+                System.out.println("Duplicate user");
                 return;
+            }
+                
         }
         users.add(newUser);
+        System.out.println("User Added");
+        return;
+    }
+    
+    public boolean removeUser(User toDelete)
+    {
+        if(users.contains(toDelete))
+        {
+            System.out.println(toDelete.name +" has been removed");
+            users.remove(toDelete);
+            return true;
+        }
+        else
+        {
+            System.out.println("User not found");
+            return false;
+        }
     }
 }

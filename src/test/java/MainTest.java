@@ -14,7 +14,7 @@ public class MainTest
     User person;
     Genre fiction;
     Library l;
-    User dup_id;
+    
     
     @Before
     public void setUp() 
@@ -22,9 +22,7 @@ public class MainTest
         person = new User("Mark", 1);
         fiction = new Genre("FICTION", "a fiction book");
         b = new Book("Book1","Author1",fiction,1995,1,1);
-        l = new Library();
-        dup_id = new User("John",1);
-        
+        l = new Library();          
     }
     
     @After
@@ -90,19 +88,49 @@ public class MainTest
     /**
      * Testing a duplicate id entry in addUser()
      */
-    public void testIncorrectUser()
+    public void testDuplicateUser()
     {
         //this test will attempt to add 2 values to the list but only 1
         //will be added since it is a duplicate
         //Upon comparing the above with the below arraylist
         //The test will result in a success since both lists have a size of 1
+        
+        User dup_id = new User("John",1);
         l.addUser(person);
         l.addUser(dup_id);
         
-        ArrayList<User> users = new ArrayList<User>();
-        users.add(person);
+        ArrayList<User> testList = new ArrayList<User>();
+        testList.add(person);
         
-        assertEquals(users, l.users);
+        assertEquals(testList, l.users);
+    }
+    
+    @Test
+    /**
+     * Testing deleting a user from the library
+     */
+    public void testValidDelete()
+    {
+        //this test compares an empty ArrayList with l.users after
+        //the library has had only a single user entered and deleted from the library
+        l.addUser(person);
+        
+        ArrayList<User> testList = new ArrayList<User>();
+        l.removeUser(person);
+        
+        assertEquals(testList, l.users);
+    }
+    
+    @Test
+    /**
+     * testing deleting a user that does not exist
+     */
+    public void testInvalidDelete()
+    {
+        User otherUser = new User("John",1);
+        
+        l.addUser(person);
+        assertEquals(false, l.removeUser(otherUser));
     }
     
 }
