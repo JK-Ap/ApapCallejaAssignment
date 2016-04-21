@@ -1,19 +1,19 @@
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 class User 
 {
     String name;
     int id;
-    ArrayList<Book> list = new ArrayList<Book>();
-    ArrayList<Date> dates = new ArrayList<Date>();
+    ArrayList<Book> list =null;
+    ArrayList<Calendar> dates = null;
     
     protected User(String n,int i)
     {
         name = n;
         id = i;
-        list = null;
-        dates = null;
+        list = new ArrayList<Book>();
+        dates = new ArrayList<Calendar>();
     }
 }

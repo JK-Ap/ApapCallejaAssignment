@@ -15,7 +15,7 @@ public class Library
     }
     
     //adds a user to the users list 
-    public void addUser(User newUser)
+    protected void addUser(User newUser)
     {
         for(User u : users)
         {
@@ -32,7 +32,7 @@ public class Library
     }
     
     //removes a user from the users list (if present)
-    public boolean removeUser(User toDelete)
+    protected boolean removeUser(User toDelete)
     {
         if(users.contains(toDelete))
         {
@@ -48,7 +48,7 @@ public class Library
     }
     
     //adds a genre to the genres list 
-    public void addGenre(Genre newGenre)
+    protected void addGenre(Genre newGenre)
     {
         for(Genre g : genres)
         {
@@ -64,7 +64,7 @@ public class Library
     }
     
     //adds a book to the books list 
-    public void addBook(Book newBook)
+    protected void addBook(Book newBook)
     {
         for(Book b : books)
         {

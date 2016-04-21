@@ -15,7 +15,7 @@ public class Library
 <span class="fc" id="L15">    }</span>
     
     //adds a user to the users list 
-    public void addUser(User newUser)
+    protected void addUser(User newUser)
     {
 <span class="fc bfc" id="L20" title="All 2 branches covered.">        for(User u : users)</span>
         {
@@ -32,7 +32,7 @@ public class Library
     }
     
     //removes a user from the users list (if present)
-    public boolean removeUser(User toDelete)
+    protected boolean removeUser(User toDelete)
     {
 <span class="fc bfc" id="L37" title="All 2 branches covered.">        if(users.contains(toDelete))</span>
         {
@@ -48,7 +48,7 @@ public class Library
     }
     
     //adds a genre to the genres list 
-    public void addGenre(Genre newGenre)
+    protected void addGenre(Genre newGenre)
     {
 <span class="fc bfc" id="L53" title="All 2 branches covered.">        for(Genre g : genres)</span>
         {
@@ -64,7 +64,7 @@ public class Library
     }
     
     //adds a book to the books list 
-    public void addBook(Book newBook)
+    protected void addBook(Book newBook)
     {
 <span class="fc bfc" id="L69" title="All 2 branches covered.">        for(Book b : books)</span>
         {

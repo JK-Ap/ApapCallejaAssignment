@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +15,7 @@ public class MainTest
     User person;
     Genre fiction;
     Library l;
+    Catalogue c;
     
     
     @Before
@@ -22,7 +24,8 @@ public class MainTest
         person = new User("Mark", 1);
         fiction = new Genre("FICTION", "a fiction book");
         b = new Book("Book1","Author1",fiction,1995,1,1);
-        l = new Library();          
+        l = new Library();
+        c = new Catalogue(l);
     }
     
     @After
@@ -59,8 +62,8 @@ public class MainTest
     {
         assertEquals("Mark", person.name);
         assertEquals(1, person.id);
-        assertEquals(null, person.list);
-        assertEquals(null, person.dates);
+        assertEquals(new ArrayList<Book>(), person.list);
+        assertEquals(new ArrayList<Calendar>(),person.dates);
     }
     
     @Test
@@ -201,6 +204,15 @@ public class MainTest
         testList.add(b);
         
         assertEquals(testList, l.books);
+    }
+    
+    @Test
+    /**
+     * Testing Catalogue getAllBooks()
+     */
+    public void testGetBooks()
+    {     
+        assertEquals(c.getAllBooks(), l.books);
     }
     
 }
