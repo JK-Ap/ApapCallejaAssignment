@@ -6,19 +6,30 @@
     int year_of_pub;
     int edition;
     User loaned;
+    //id is unique for each book
     int id;
     boolean isLoaned;
     
+    /**
+     * Constructor for Book while filling in all its necessary properties 
+     * isLoaned is initially set to false
+     * @param t used for title
+     * @param a used for author
+     * @param g instance of Genre used for genre
+     * @param y used for year_of_pub
+     * @param e used for edition
+     * @param i used for id
+     */
     public Book(String t, String a, Genre g, int y, int e, int i)
-<span class="fc" id="L13">    {</span>
-<span class="fc" id="L14">        title = t;</span>
-<span class="fc" id="L15">        author = a;</span>
-<span class="fc" id="L16">        genre = g;</span>
-<span class="fc" id="L17">        year_of_pub =y;</span>
-<span class="fc" id="L18">        edition = e;</span>
-<span class="fc" id="L19">        id = i;</span>
-<span class="fc" id="L20">        loaned = null;</span>
-<span class="fc" id="L21">        isLoaned = false;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L24">    {</span>
+<span class="fc" id="L25">        title = t;</span>
+<span class="fc" id="L26">        author = a;</span>
+<span class="fc" id="L27">        genre = g;</span>
+<span class="fc" id="L28">        year_of_pub =y;</span>
+<span class="fc" id="L29">        edition = e;</span>
+<span class="fc" id="L30">        id = i;</span>
+<span class="fc" id="L31">        loaned = null;</span>
+<span class="fc" id="L32">        isLoaned = false;</span>
+<span class="fc" id="L33">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

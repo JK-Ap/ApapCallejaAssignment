@@ -1,15 +1,22 @@
-
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Library 
 {
-    ArrayList<User> users; 
-    ArrayList<Book> books;
-    ArrayList<Genre> genres;
+    //Library class used to store all data necessary for the system as well as 
+    //add/remove new instances of objects
     
+    //stores all Users
+    public ArrayList<User> users; 
+    //stores all Books
+    public ArrayList<Book> books;
+    //stores all Genres
+    public ArrayList<Genre> genres;
+    
+    /**
+     * Constructor for the Library which initializes the ArrayLists 
+     */
     public Library()
     {
         users = new ArrayList<User>();
@@ -17,73 +24,110 @@ public class Library
         genres = new ArrayList<Genre>();
     }
     
-    //adds a user to the users list 
-    public void addUser(User newUser)
+    /**
+     * adds a user to the users list. The add us successful if the id is unique
+     * @param newUser User to be added
+     * @return true if the user was successfully added or false if it is a duplicate
+     */
+    public boolean addUser(User newUser)
     {
-        for(User u : users)
+        //checks all existing User's id as there cannot be a duplicate id
+        for(User u : this.users)
         {
             if(u.id == newUser.id)
             {
+                //returns false if a duplicate is found
                 System.out.println("Duplicate user");
-                return;
+                return false;
             }
                 
         }
-        users.add(newUser);
+        //if it is not a duplicate it is added to the list
+        this.users.add(newUser);
         System.out.println("User Added");
-        return;
+        return true;
     }
     
-    //removes a user from the users list (if present)
+    /**
+     * removes a user from the users list (if present)
+     * @param toDelete User to be removed
+     * @return true if the user was deleted, false if the user does not exist
+     */
     public boolean removeUser(User toDelete)
     {
-        if(users.contains(toDelete))
+        //checks if the list of Users contains the User
+        if(this.users.contains(toDelete))
         {
+            //removes the User from users and returns true if it is found
             System.out.println(toDelete.name +" has been removed");
-            users.remove(toDelete);
+            this.users.remove(toDelete);
             return true;
         }
         else
         {
+            //returns false otherwise
             System.out.println("User not found");
             return false;
         }
     }
     
-    //adds a genre to the genres list 
-    public void addGenre(Genre newGenre)
+    /**
+     * adds a genre to the genres list if there isn't already a Genre with that name
+     * @param newGenre Genre to be added
+     * @return true if the Genre name is unique, false otherwise
+     */ 
+    public boolean addGenre(Genre newGenre)
     {
+        //checks each Genre's name
         for(Genre g : genres)
         {
             if(g.name.equals(newGenre.name))
             {
+                //returns false if the name isn't unique
                 System.out.println("Duplicate genre");
-                return;
+                return false;
             }             
         }
-        genres.add(newGenre);
+        //returns true if the add was successfull
+        this.genres.add(newGenre);
         System.out.println("Genre Added");
-        return;
+        return true;
     }
     
-    //adds a book to the books list 
-    public void addBook(Book newBook)
+    /**
+     * adds a Book to the books list. The add us successful if the id is unique
+     * @param newBook Book to be added
+     * @return true if the Book was successfully added or false if it is a duplicate
+     */
+    public boolean addBook(Book newBook)
     {
+        //checks the id of each existing book
         for(Book b : books)
         {
             if(b.id == newBook.id)
             {
+                //returns false if the id is a duplicate
                 System.out.println("Duplicate book");
-                return;
+                return false;
             }
-                
         }
-        books.add(newBook);
+        //otherwise adds the book and returns true
+        this.books.add(newBook);
         System.out.println("Book Added");
-        return;
+        return true;
     }
     
-    
+    /**
+     * Loans a specified Book to a Specified user
+     * the Book is added to User's list of Books and the date of loan is stored in
+     * the User's list of dates to keep track of a specific date for each Book
+     * @param book_loaned Book to be loaned
+     * @param to_user User
+     * @param c date for each loan
+     * @return a String message depending on if the loan was successful or not
+     *          if it was not successful different messages inform the user why
+     *          the loan was not successful
+     */
     public String loanBookTo(Book book_loaned, User to_user, Date c)
     {
         //user and books must be in the library
@@ -93,6 +137,7 @@ public class Library
         if(!books.contains(book_loaned))
             return ("Book does not exist");
         
+        //the book has to not already be loaned
         if(book_loaned.isLoaned)
             return ("Book is already loaned");
         
@@ -111,22 +156,36 @@ public class Library
         //otherwise it is added to the user's ArrayLists
         to_user.list.add(book_loaned);
         to_user.dates.add(c);
+        //the book is set to loaned
         book_loaned.isLoaned = true;
         return "book loaned";
     }   
 
+    /**
+     * Returns a loaned book
+     * @param returned_book Book instance
+     * @return true if the return was successful, false otherwise
+     */
     public boolean returnBook(Book returned_book)
     {
+        //return false if the book is not loaned or if the Book is not in the 
+        //Library's lit of book
         if (!returned_book.isLoaned)
+        {
+            System.out.println("Book is not loaned");
             return false;
-        else if (!books.contains(returned_book))
+        }
+        else if (!this.books.contains(returned_book))
+        {
+            System.out.println("Book does not exist");
             return false;
+        }
         else
         {
             //checks each book for each user
             //if any of the books match, the book is removed along with its
             //respective time in the dates ArrayList
-            for(User each_user: users)
+            for(User each_user: this.users)
             {
                 for(int i =0; i<each_user.list.size();i++)
                 {

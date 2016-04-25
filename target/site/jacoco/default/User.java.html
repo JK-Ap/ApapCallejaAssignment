@@ -5,16 +5,25 @@ import java.util.Date;
 class User 
 {
     String name;
+    //id must be unique
     int id;
-<span class="fc" id="L9">    ArrayList&lt;Book&gt; list =null;</span>
-<span class="fc" id="L10">    ArrayList&lt;Date&gt; dates = null;</span>
+    //stores a list of Books and a list of Dates
+    //each Book has an associated date to be used when checking if a book
+    //is overdue
+<span class="fc" id="L13">    ArrayList&lt;Book&gt; list =null;</span>
+<span class="fc" id="L14">    ArrayList&lt;Date&gt; dates = null;</span>
     
+    /**
+     * Constructor for User
+     * @param n used for name
+     * @param i used for id
+     */
     public User(String n,int i)
-<span class="fc" id="L13">    {</span>
-<span class="fc" id="L14">        name = n;</span>
-<span class="fc" id="L15">        id = i;</span>
-<span class="fc" id="L16">        list = new ArrayList&lt;Book&gt;();</span>
-<span class="fc" id="L17">        dates = new ArrayList&lt;Date&gt;();</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L22">    {</span>
+<span class="fc" id="L23">        name = n;</span>
+<span class="fc" id="L24">        id = i;</span>
+<span class="fc" id="L25">        list = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L26">        dates = new ArrayList&lt;Date&gt;();</span>
+<span class="fc" id="L27">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>
