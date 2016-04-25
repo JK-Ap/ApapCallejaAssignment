@@ -1,14 +1,14 @@
 public class Book 
 {
-    String title;
-    String author;
-    Genre genre;
-    int year_of_pub;
-    int edition;
-    User loaned;
+    public String title;
+    public String author;
+    public Genre genre;
+    public int year_of_pub;
+    public int edition;
+    public User loaned;
     //id is unique for each book
-    int id;
-    boolean isLoaned;
+    public int id;
+    public boolean isLoaned;
     
     /**
      * Constructor for Book while filling in all its necessary properties 

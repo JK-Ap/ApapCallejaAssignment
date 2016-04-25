@@ -4,9 +4,9 @@ import java.util.Date;
 
 class User 
 {
-    String name;
+    public String name;
     //id must be unique
-    int id;
+    public int id;
     //stores a list of Books and a list of Dates
     //each Book has an associated date to be used when checking if a book
     //is overdue
