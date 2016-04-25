@@ -1,7 +1,7 @@
-class Genre 
+public class Genre 
 {
-    public String name;
-    public String desc;
+    String name;
+    String desc;
     
     /**
      * Constructor for Genre

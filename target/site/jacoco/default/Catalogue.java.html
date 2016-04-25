@@ -5,7 +5,7 @@ public class Catalogue
 {
     //creates a catalogue used to search through books of a specific Library instance
     
-    public Library lib;
+    Library lib;
     
     /**
      * Constructor for Catalogue which takes in an instance of a Library

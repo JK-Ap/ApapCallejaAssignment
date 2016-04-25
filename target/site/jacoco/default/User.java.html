@@ -2,11 +2,11 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-class User 
+public class User 
 {
-    public String name;
+    String name;
     //id must be unique
-    public int id;
+    int id;
     //stores a list of Books and a list of Dates
     //each Book has an associated date to be used when checking if a book
     //is overdue

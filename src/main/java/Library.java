@@ -8,11 +8,11 @@ public class Library
     //add/remove new instances of objects
     
     //stores all Users
-    public ArrayList<User> users; 
+    ArrayList<User> users; 
     //stores all Books
-    public ArrayList<Book> books;
+    ArrayList<Book> books;
     //stores all Genres
-    public ArrayList<Genre> genres;
+    ArrayList<Genre> genres;
     
     /**
      * Constructor for the Library which initializes the ArrayLists 
