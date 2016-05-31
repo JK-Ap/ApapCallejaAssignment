@@ -19,7 +19,7 @@ public class Catalogue
      * static method to provide access to the Catalogue instance from other classes
      * @return singInst as the only instance of the catalogue
      */
-    public static Catalogue getInstance() {
+    public static Catalogue getCatalogueInstance() {
         
         if (singInst == null) {
             singInst = new Catalogue();

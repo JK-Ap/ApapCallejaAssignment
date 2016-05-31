@@ -1,29 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dummy</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
-public class User 
-{
+public class User {
+
     String name;
     //id must be unique
     int id;
     //stores a list of Books and a list of Dates
     //each Book has an associated date to be used when checking if a book
     //is overdue
-<span class="fc" id="L13">    ArrayList&lt;Book&gt; list =null;</span>
-<span class="fc" id="L14">    ArrayList&lt;Date&gt; dates = null;</span>
-    
+<span class="fc" id="L17">    ArrayList&lt;Book&gt; list = null;</span>
+<span class="fc" id="L18">    ArrayList&lt;Date&gt; dates = null;</span>
+
     /**
      * Constructor for User
+     *
      * @param n used for name
      * @param i used for id
      */
-    public User(String n,int i)
-<span class="fc" id="L22">    {</span>
-<span class="fc" id="L23">        name = n;</span>
-<span class="fc" id="L24">        id = i;</span>
-<span class="fc" id="L25">        list = new ArrayList&lt;Book&gt;();</span>
-<span class="fc" id="L26">        dates = new ArrayList&lt;Date&gt;();</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L26">    public User(String n, int i) {</span>
+<span class="fc" id="L27">        name = n;</span>
+<span class="fc" id="L28">        id = i;</span>
+<span class="fc" id="L29">        list = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L30">        dates = new ArrayList&lt;Date&gt;();</span>
+<span class="fc" id="L31">    }</span>
+
+    public boolean Update(Book b) {
+        try {
+<span class="nc" id="L35">            SimpleDateFormat myFormat = new SimpleDateFormat(&quot;dd MM yyyy&quot;);</span>
+<span class="nc" id="L36">            Date date1 = myFormat.parse(Calendar.getInstance().getTime().toString());</span>
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            for (Date each_date : this.dates) {</span>
+<span class="nc" id="L39">                long diff = date1.getTime() - each_date.getTime();</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">                if (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) &gt; 28) {</span>
+<span class="nc" id="L41">                    return false;</span>
+                }
+<span class="nc" id="L43">            }</span>
+            //user must have not more than 3 books
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (this.list.size() &gt; 2) {</span>
+<span class="nc" id="L46">                return false;</span>
+            }
+
+            //each date when compared to the current date must be &lt;4weeks
+            //otherwise it is added to the user's ArrayLists
+<span class="nc" id="L51">            this.list.add(b);</span>
+<span class="nc" id="L52">            this.dates.add(date1);</span>
+            //the book is set to loaned
+<span class="nc" id="L54">            b.isLoaned = true;</span>
+<span class="nc" id="L55">            return true;</span>
+        } 
+<span class="nc" id="L57">        catch (ParseException e) </span>
+        {
+        }
+<span class="nc" id="L60">        return false;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>
