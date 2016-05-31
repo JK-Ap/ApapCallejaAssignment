@@ -5,23 +5,38 @@ public class Catalogue
 {
     //creates a catalogue used to search through books of a specific Library instance
     
+    /**
+     * Constructor for Catalogue
+     */
+    private Catalogue()
+<span class="fc" id="L12">    {</span>
+<span class="fc" id="L13">    }</span>
+    
+<span class="fc" id="L15">    private static Catalogue singInst = null;</span>
+    
+    public static Catalogue getInstance() {
+        
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (singInst == null) {</span>
+<span class="fc" id="L20">            singInst = new Catalogue();</span>
+        }
+<span class="fc" id="L22">        return singInst;</span>
+    }
+    
+    //Library to be used
     Library lib;
     
-    /**
-     * Constructor for Catalogue which takes in an instance of a Library
-     * @param l Library instance
-     */
-    public Catalogue(Library l)
-<span class="fc" id="L15">    {</span>
-<span class="fc" id="L16">        lib = l;</span>
-<span class="fc" id="L17">    }</span>
+    //Sets required Library
+    public void setLibrary(Library l)
+    {
+<span class="fc" id="L31">        lib = l;</span>
+<span class="fc" id="L32">    }</span>
     
     /**
      * @return the books found in Library
      */
     public ArrayList&lt;Book&gt; getAllBooks()
     {
-<span class="fc" id="L24">        return lib.books;</span>
+<span class="fc" id="L39">        return lib.books;</span>
     }
     
     /**
@@ -32,16 +47,16 @@ public class Catalogue
     public ArrayList&lt;Book&gt; searchByTitle(String title)
     {
         //used to store the filtered list of books
-<span class="fc" id="L35">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L50">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
         //checks the title of each Book in the Library
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        for(Book book: lib.books)</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for(Book book: lib.books)</span>
         {
-<span class="fc bfc" id="L39" title="All 2 branches covered.">            if(book.title.toLowerCase().contains(title.toLowerCase()))</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            if(book.title.toLowerCase().contains(title.toLowerCase()))</span>
             {
-<span class="fc" id="L41">                filtered.add(book);</span>
+<span class="fc" id="L56">                filtered.add(book);</span>
             }
-<span class="fc" id="L43">        }</span>
-<span class="fc" id="L44">        return filtered;</span>
+<span class="fc" id="L58">        }</span>
+<span class="fc" id="L59">        return filtered;</span>
     }
     
     /**
@@ -52,16 +67,16 @@ public class Catalogue
     public ArrayList&lt;Book&gt; searchByGenre(Genre g)
     {
         //used to store the filtered list of books
-<span class="fc" id="L55">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L70">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
         //checks the Genre of each Book in the Library
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        for(Book book: lib.books)</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        for(Book book: lib.books)</span>
         {
-<span class="fc bfc" id="L59" title="All 2 branches covered.">            if(book.genre == g)</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if(book.genre == g)</span>
             {
-<span class="fc" id="L61">                filtered.add(book);</span>
+<span class="fc" id="L76">                filtered.add(book);</span>
             }
-<span class="fc" id="L63">        }</span>
-<span class="fc" id="L64">        return filtered;</span>
+<span class="fc" id="L78">        }</span>
+<span class="fc" id="L79">        return filtered;</span>
     }
     
     /**
@@ -72,17 +87,24 @@ public class Catalogue
     public ArrayList&lt;Book&gt; searchByYearOfPublication(int year)
     {
         //used to store the filtered list of books
-<span class="fc" id="L75">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L90">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
         //checks the year_of_pub of each Book in the Library
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        for(Book book: lib.books)</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        for(Book book: lib.books)</span>
         {
-<span class="fc bfc" id="L79" title="All 2 branches covered.">            if(book.year_of_pub == year)</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            if(book.year_of_pub == year)</span>
             {
-<span class="fc" id="L81">                filtered.add(book);</span>
+<span class="fc" id="L96">                filtered.add(book);</span>
             }
-<span class="fc" id="L83">        }</span>
-<span class="fc" id="L84">        return filtered;</span>
+<span class="fc" id="L98">        }</span>
+<span class="fc" id="L99">        return filtered;</span>
     }
+    
+//    public ArrayList&lt;Book&gt; searchForBooks(Filter f) {
+//        
+//        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();
+//        
+//        return filtered;
+//    }
     
     
 }

@@ -5,13 +5,33 @@ public class Catalogue
 {
     //creates a catalogue used to search through books of a specific Library instance
     
-    Library lib;
+    /**
+     * Constructor for Catalogue private as it is a Singleton class
+     */
+    private Catalogue()
+    {
+    }
+    
+    //Stores the Catalogue instance
+    private static Catalogue singInst = null;
     
     /**
-     * Constructor for Catalogue which takes in an instance of a Library
-     * @param l Library instance
+     * static method to provide access to the Catalogue instance from other classes
+     * @return singInst as the only instance of the catalogue
      */
-    public Catalogue(Library l)
+    public static Catalogue getInstance() {
+        
+        if (singInst == null) {
+            singInst = new Catalogue();
+        }
+        return singInst;
+    }
+    
+    //Library to be used
+    Library lib;
+    
+    //Sets required Library
+    public void setLibrary(Library l)
     {
         lib = l;
     }
@@ -83,6 +103,13 @@ public class Catalogue
         }
         return filtered;
     }
+    
+//    public ArrayList<Book> searchForBooks(Filter f) {
+//        
+//        ArrayList<Book> filtered = new ArrayList<Book>();
+//        
+//        return filtered;
+//    }
     
     
 }

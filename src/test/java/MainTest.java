@@ -26,7 +26,8 @@ public class MainTest
         fiction = new Genre("FICTION", "a fiction book");
         first_book = new Book("Book1","Author1",fiction,1995,1,1);
         lib = new Library();
-        cat = new Catalogue(lib);
+        cat = Catalogue.getInstance();
+        cat.setLibrary(lib);
     }
     
     @After
