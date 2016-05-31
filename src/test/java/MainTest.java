@@ -175,7 +175,7 @@ public class MainTest
     
     @Test
     /**
-     * Testing Catalogue searchByTitle()
+     * Testing Catalogue searchForBooks() filtering by title only
      */
     public void testGetBooksByTitle()
     {     
@@ -197,13 +197,14 @@ public class MainTest
         testList.add(book2);
         testList.add(book4);
         
-        CompoundFilter cf = new CompoundFilter("dummy",null,"",0);
+        //compound filter used for searchForBooks()
+        FacadeFilter cf = new FacadeFilter("dummy",null,"",0);
         assertEquals(cat.searchForBooks(cf), testList);
     }
     
     @Test
     /**
-     * Testing Catalogue searchByTitle()
+     * Testing Catalogue searchForBooks() filtering by author only
      */
     public void testGetBooksByAuthor()
     {     
@@ -224,14 +225,15 @@ public class MainTest
         testList.add(book2);
         testList.add(book4);
         
-        CompoundFilter cf = new CompoundFilter("",null,"Author2",0);
+        //compound filter used for searchForBooks()
+        FacadeFilter cf = new FacadeFilter("",null,"Author2",0);
         assertEquals(cat.searchForBooks(cf), testList);
     }
     
   
     @Test
     /**
-     * Testing Catalogue searchByGenre()
+     * Testing Catalogue searchForBooks() filtering by genre and year
      */
     public void testGetBooksByGenreAndYear()
     {     
@@ -253,14 +255,15 @@ public class MainTest
         ArrayList<Book> testList = new ArrayList<Book>();
         testList.add(book2);
         
-        CompoundFilter cf = new CompoundFilter("",nonfiction,"",2016);
+        //compound filter used for searchForBooks()
+        FacadeFilter cf = new FacadeFilter("",nonfiction,"",2016);
         
         assertEquals(cat.searchForBooks(cf), testList);
     }
     
     @Test
     /**
-     * Testing Catalogue searchByYearOfPublication()
+     * Testing Catalogue searchForBooks() filtering by genre, year, title and author
      */
     public void testComplexFilter()
     {     
@@ -294,7 +297,8 @@ public class MainTest
         ArrayList<Book> testList = new ArrayList<Book>();
         testList.add(book5);
         
-        CompoundFilter cf = new CompoundFilter("Dummy",nonfiction,"Author1",2016);
+        //compound filter used for searchForBooks()
+        FacadeFilter cf = new FacadeFilter("Dummy",nonfiction,"Author1",2016);
         
         assertEquals(cat.searchForBooks(cf), testList);
     }
@@ -534,6 +538,7 @@ public class MainTest
     
     /**
      * Tests attempting to register interest in a book correctly
+     * test that the function returns true
      */
     @Test
     public void testCorrectRegister()
@@ -562,6 +567,7 @@ public class MainTest
     
     /**
      * Tests attempting to register interest in a book correctly
+     * Book is already not loaned
      */
     @Test
     public void testIncorrectRegisterNotLoaned()
@@ -576,9 +582,10 @@ public class MainTest
     
     /**
      * Tests attempting to register interest in a book correctly
+     * User already has the book loaned so it will return false
      */
     @Test
-    public void testincorrectRegisterAlreadyThreeBooks()
+    public void testincorrectRegisterAlreadyLoanedToUser()
     {
         Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
         lib.addBook(book1);
@@ -602,6 +609,7 @@ public class MainTest
     
     /**
      * Tests updating a user with a registered book given
+     * function should return true
      */
     @Test
     public void testCorrectUpdate()
@@ -617,7 +625,7 @@ public class MainTest
     
     /**
      * Tests updating a user with a registered book given but the user has
-     * an overdue book
+     * an overdue book so Update() will return false
      */
     @Test
     public void testIncorrectUpdateOverdue()
@@ -646,7 +654,7 @@ public class MainTest
     
     /**
      * Tests updating a user with a registered book given but the user 
-     * already has 3 books
+     * already has 3 books so Update() will return false
      */
     @Test
     public void testIncorrectUpdateMaxBooksWithdrawn()
@@ -681,7 +689,8 @@ public class MainTest
 
     /**
      * Tests NotifyQueue with valid case, the assert is done on the boolean isLoaned 
-     * of the book as after being returned it should still be set as loaned
+     * of the book as after being returned it should still be set as loaned because
+     * it is immediately given to the first user waiting for that book
      */
     @Test
     public void testCorrectNotifyQueue()
@@ -712,7 +721,8 @@ public class MainTest
     }   
     
     /**
-     * Tests NotifyQueue with invalid case as noone has registered interest
+     * Tests NotifyQueue with invalid case as no-one has registered interest
+     * isLoaned should be false
      */
     @Test
     public void testIncorrectNotifyQueueWithNoQueue()
@@ -749,7 +759,8 @@ public class MainTest
     
     
     /**
-     * Tests NotifyQueue with invalid case as noone has registered interest
+     * Tests NotifyQueue with invalid case as user cannot loan the book he has
+     * requested as he already has a book overdue. THerefore isLoaned will be false
      */
     @Test
     public void testIncorrectNotifyQueueWithOverdueUser()

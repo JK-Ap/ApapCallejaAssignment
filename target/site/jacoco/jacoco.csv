@@ -7,5 +7,5 @@ Dummy,default,YearFilter,0,40,0,6,0,12,0,5,0,2
 Dummy,default,TitleFilter,0,41,0,6,0,11,0,5,0,2
 Dummy,default,Library,6,272,2,36,3,66,2,24,0,7
 Dummy,default,Genre,0,9,0,0,0,4,0,1,0,1
-Dummy,default,CompoundFilter,0,47,0,0,0,10,0,5,0,5
 Dummy,default,AuthorFilter,0,41,0,6,0,11,0,5,0,2
+Dummy,default,FacadeFilter,0,47,0,0,0,10,0,5,0,5

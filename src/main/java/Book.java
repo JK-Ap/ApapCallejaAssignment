@@ -37,10 +37,12 @@ public class Book
     }
     
     /**
-     * Adds a user to the queue of users
+     * Adds a user to the queue of users to receive the book after immediately
+     * after it is returned
      * @param u User to be registered
-     * @return false if the book is is already loaned out to the user or not loaned out
-     *          true if the add is successful
+     * @return false if the book is is already loaned out to the user or 
+     *            not loaned out to anyone
+     *          true if the Register is successful
      */
     public boolean RegisterInterest(User u)
     {
@@ -52,6 +54,13 @@ public class Book
         return true;
     }
     
+    /**
+     * Updates the queue and whoever the book is loaned to when a book is transferred
+     * to someone who was registered for it. Uses Update() to see if the new user 
+     * is allowed to withdraw the book
+     * @return false if the queue is empty or the new user cannot withdraw the book
+     *          true otherwise
+     */
     public boolean NotifyQueue()
     {
         if(queueOfUsers.isEmpty())

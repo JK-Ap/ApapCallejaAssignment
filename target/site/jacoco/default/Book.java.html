@@ -37,33 +37,42 @@ public class Book
 <span class="fc" id="L37">    }</span>
     
     /**
-     * Adds a user to the queue of users
+     * Adds a user to the queue of users to receive the book after immediately
+     * after it is returned
      * @param u User to be registered
-     * @return false if the book is is already loaned out to the user or not loaned out
-     *          true if the add is successful
+     * @return false if the book is is already loaned out to the user or 
+     *            not loaned out to anyone
+     *          true if the Register is successful
      */
     public boolean RegisterInterest(User u)
     {
-<span class="fc bfc" id="L47" title="All 2 branches covered.">        if(u.list.contains(this))</span>
-<span class="fc" id="L48">            return false;</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        if(!this.isLoaned)</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if(u.list.contains(this))</span>
 <span class="fc" id="L50">            return false;</span>
-<span class="fc" id="L51">        this.queueOfUsers.add(u);</span>
-<span class="fc" id="L52">        return true;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if(!this.isLoaned)</span>
+<span class="fc" id="L52">            return false;</span>
+<span class="fc" id="L53">        this.queueOfUsers.add(u);</span>
+<span class="fc" id="L54">        return true;</span>
     }
     
+    /**
+     * Updates the queue and whoever the book is loaned to when a book is transferred
+     * to someone who was registered for it. Uses Update() to see if the new user 
+     * is allowed to withdraw the book
+     * @return false if the queue is empty or the new user cannot withdraw the book
+     *          true otherwise
+     */
     public boolean NotifyQueue()
     {
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        if(queueOfUsers.isEmpty())</span>
-<span class="fc" id="L58">            return false;</span>
-<span class="fc bfc" id="L59" title="All 2 branches covered.">        if(queueOfUsers.get(0).Update(this))</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if(queueOfUsers.isEmpty())</span>
+<span class="fc" id="L67">            return false;</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if(queueOfUsers.get(0).Update(this))</span>
         {
-<span class="fc" id="L61">            loaned = queueOfUsers.get(0);</span>
-<span class="fc" id="L62">            queueOfUsers.remove(queueOfUsers.get(0));</span>
-<span class="fc" id="L63">            return true;</span>
+<span class="fc" id="L70">            loaned = queueOfUsers.get(0);</span>
+<span class="fc" id="L71">            queueOfUsers.remove(queueOfUsers.get(0));</span>
+<span class="fc" id="L72">            return true;</span>
         }
         else
-<span class="fc" id="L66">            return false;</span>
+<span class="fc" id="L75">            return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

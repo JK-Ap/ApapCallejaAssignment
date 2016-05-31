@@ -1,29 +1,32 @@
 
 import java.util.ArrayList;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 /**
- *
- * @author User
+ * Filter by author
  */
 public class AuthorFilter implements Filter {
     
+    //filter condition
     public String author;
     
+    /**
+     * Constructor
+     * @param a filter condition
+     */
     public AuthorFilter(String a)
     {
         author = a;
     }
     
+    /**
+     * Goes through each book in the passed parameter and adds it to a new ArrayList
+     * if the book's author contains the author's title
+     * @param bookList to be filtered
+     * @return the new filtered list
+     */
     @Override
     public ArrayList<Book> filter(ArrayList<Book> bookList) {
         
+         //if there is no filter condition, booklist is returned
         if(!author.isEmpty())
         {
             //used to store the filtered list of books

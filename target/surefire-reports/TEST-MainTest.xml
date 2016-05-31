@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.151" errors="0" skipped="0" tests="36" name="MainTest">
+<testsuite failures="0" time="0.152" errors="0" skipped="0" tests="36" name="MainTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_51\jre\bin"/>
@@ -70,15 +70,14 @@
   <testcase time="0" classname="MainTest" name="testIncorrectRegisterNotLoaned"/>
   <testcase time="0" classname="MainTest" name="testCorrectGenre"/>
   <testcase time="0" classname="MainTest" name="testCatalogueConstructor"/>
-  <testcase time="0" classname="MainTest" name="testGetBooksByTitle"/>
+  <testcase time="0.001" classname="MainTest" name="testGetBooksByTitle"/>
   <testcase time="0" classname="MainTest" name="testCorrectNotifyQueue"/>
   <testcase time="0" classname="MainTest" name="testGetBooksByGenreAndYear"/>
   <testcase time="0" classname="MainTest" name="testIncorrectUpdateMaxBooksWithdrawn"/>
   <testcase time="0" classname="MainTest" name="testBookConstructor"/>
-  <testcase time="0.001" classname="MainTest" name="testUserConstructor"/>
+  <testcase time="0" classname="MainTest" name="testUserConstructor"/>
   <testcase time="0.001" classname="MainTest" name="testIncorrectNotifyQueueWithNoQueue"/>
   <testcase time="0" classname="MainTest" name="testInvalidDelete"/>
-  <testcase time="0.001" classname="MainTest" name="testincorrectRegisterAlreadyThreeBooks"/>
   <testcase time="0" classname="MainTest" name="testComplexFilter"/>
   <testcase time="0" classname="MainTest" name="testDuplicateBook"/>
   <testcase time="0" classname="MainTest" name="testDuplicateUser"/>
@@ -86,9 +85,10 @@
   <testcase time="0" classname="MainTest" name="testCorrectLoan"/>
   <testcase time="0" classname="MainTest" name="testCorrectUser"/>
   <testcase time="0.001" classname="MainTest" name="testIncorrectNotifyQueueWithOverdueUser"/>
+  <testcase time="0" classname="MainTest" name="testincorrectRegisterAlreadyLoanedToUser"/>
   <testcase time="0" classname="MainTest" name="testLoanForExceededMaxBooks"/>
   <testcase time="0" classname="MainTest" name="testGenreConstructor"/>
-  <testcase time="0.001" classname="MainTest" name="testBookAlreadyLoaned"/>
+  <testcase time="0" classname="MainTest" name="testBookAlreadyLoaned"/>
   <testcase time="0" classname="MainTest" name="testCorrectUpdate"/>
   <testcase time="0" classname="MainTest" name="testValidDelete"/>
   <testcase time="0.001" classname="MainTest" name="testLoanForInvalidBook"/>

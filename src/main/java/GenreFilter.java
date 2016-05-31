@@ -1,28 +1,32 @@
 
 import java.util.ArrayList;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 /**
- *
+ * Filter by a specific Genre
  * @author User
  */
 public class GenreFilter implements Filter{
 
+    //Genre used for filter
     Genre genre;
     
+    /**
+     * Constructor
+     * @param g filtr condition
+     */
     public GenreFilter(Genre g)
     {
         genre = g;
     }
     
+    /**
+     * Goes through each book in the passed parameter and adds it to a new ArrayList
+     * if the book's Genre contains the instance's Genre
+     * @param bookList to be filtered
+     * @return the new filtered list
+     */
     public ArrayList<Book> filter(ArrayList<Book> bookList) {
         
+        //does not filter if the genre is null
         if (genre != null) {
             //used to store the filtered list of books
             ArrayList<Book> filtered = new ArrayList<Book>();
@@ -36,5 +40,4 @@ public class GenreFilter implements Filter{
         }
         return bookList;
     }
-    
 }
