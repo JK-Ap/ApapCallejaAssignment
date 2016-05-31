@@ -197,23 +197,22 @@ public class MainTest
         testList.add(book2);
         testList.add(book4);
         
-        assertEquals(cat.searchByTitle("dummy"), testList);
+        CompoundFilter cf = new CompoundFilter("dummy",null,"",0);
+        assertEquals(cat.searchForBooks(cf), testList);
     }
     
     @Test
     /**
-     * Testing Catalogue searchByGenre()
+     * Testing Catalogue searchByTitle()
      */
-    public void testGetBooksByGenre()
+    public void testGetBooksByAuthor()
     {     
-        //only books 2 and 4 are of the nonficiton genre so the function should
+        //only 2 and 4 are written by Author2 so the function should
         //return an ArrayList containing those items
-        Genre nonfiction = new Genre("NONFICTION","Non-fiction books");
-        
         Book book1 = new Book("ADummyTitle","Author1",fiction,2015,1,1);
-        Book book2 = new Book("Dummy","Author1",nonfiction,2015,2,2);
+        Book book2 = new Book("Dummy","Author2",fiction,2015,2,2);
         Book book3 = new Book("Title","Author1",fiction,2015,3,3);
-        Book book4 = new Book("AdummyA","Author1",nonfiction,2015,4,4);
+        Book book4 = new Book("AdummyA","Author2",fiction,2015,4,4);
         Book book5 = new Book("DummmyTitle","Author1",fiction,2015,5,5);
         lib.addBook(book1);
         lib.addBook(book2);
@@ -225,23 +224,26 @@ public class MainTest
         testList.add(book2);
         testList.add(book4);
         
-        assertEquals(cat.searchByGenre(nonfiction), testList);
+        CompoundFilter cf = new CompoundFilter("",null,"Author2",0);
+        assertEquals(cat.searchForBooks(cf), testList);
     }
     
+  
     @Test
     /**
-     * Testing Catalogue searchByYearOfPublication()
+     * Testing Catalogue searchByGenre()
      */
-    public void testGetBooksByYear()
+    public void testGetBooksByGenreAndYear()
     {     
-        //only books 1 and 5 are of the nonficiton genre so the function should
-        //return an ArrayList containing those items
-
-        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
-        Book book2 = new Book("Dummy","Author1",fiction,2015,2,2);
-        Book book3 = new Book("Title","Author1",fiction,2015,3,3);
-        Book book4 = new Book("AdummyA","Author1",fiction,2015,4,4);
-        Book book5 = new Book("DummmyTitle","Author1",fiction,2016,5,5);
+        //only book 2 nonficiton genre and published in 2016 so the function should
+        //return an ArrayList containing that
+        Genre nonfiction = new Genre("NONFICTION","Non-fiction books");
+        
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2015,1,1);
+        Book book2 = new Book("Dummy","Author1",nonfiction,2016,2,2);
+        Book book3 = new Book("Title","Author1",fiction,2016,3,3);
+        Book book4 = new Book("AdummyA","Author1",nonfiction,2015,4,4);
+        Book book5 = new Book("DummmyTitle","Author1",fiction,2015,5,5);
         lib.addBook(book1);
         lib.addBook(book2);
         lib.addBook(book3);
@@ -249,10 +251,52 @@ public class MainTest
         lib.addBook(book5);
         
         ArrayList<Book> testList = new ArrayList<Book>();
-        testList.add(book1);
+        testList.add(book2);
+        
+        CompoundFilter cf = new CompoundFilter("",nonfiction,"",2016);
+        
+        assertEquals(cat.searchForBooks(cf), testList);
+    }
+    
+    @Test
+    /**
+     * Testing Catalogue searchByYearOfPublication()
+     */
+    public void testComplexFilter()
+    {     
+        //only book 5 has:
+        //"Dummy" in the title, of the nonfiction, written by 
+        //Author1 and published in 2016
+
+        Genre nonfiction = new Genre("NONFICTION","Non-fiction books");
+        Book book1 = new Book("ADummyTitle","Author1",fiction,2016,1,1);
+        Book book2 = new Book("Dummy","Author2",nonfiction,2016,2,2);
+        Book book3 = new Book("Title","Author1",nonfiction,2016,3,3);
+        Book book4 = new Book("AdummyA","Author1",fiction,2015,4,4);
+        Book book5 = new Book("DummyTitle","Author1",nonfiction,2016,5,5);
+        Book book6 = new Book("abc","Author1",fiction,2016,1,1);
+        Book book7 = new Book("Dummy","Author2",fiction,2015,2,2);
+        Book book8 = new Book("qwerty","Author2",fiction,2016,3,3);
+        Book book9 = new Book("asdfg","Author1",nonfiction,2015,4,4);
+        Book book10 = new Book("wasd","Author1",fiction,2016,5,5);
+        lib.addBook(book1);
+        lib.addBook(book2);
+        lib.addBook(book3);
+        lib.addBook(book4);
+        lib.addBook(book5);
+        lib.addBook(book6);
+        lib.addBook(book7);
+        lib.addBook(book8);
+        lib.addBook(book9);
+        lib.addBook(book10);
+        
+        
+        ArrayList<Book> testList = new ArrayList<Book>();
         testList.add(book5);
         
-        assertEquals(cat.searchByYearOfPublication(2016), testList);
+        CompoundFilter cf = new CompoundFilter("Dummy",nonfiction,"Author1",2016);
+        
+        assertEquals(cat.searchForBooks(cf), testList);
     }
     
     @Test

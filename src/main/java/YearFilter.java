@@ -5,7 +5,6 @@
  */
 
 import java.util.ArrayList;
-import java.util.Iterator;
 /*
 /**
  *
@@ -13,31 +12,27 @@ import java.util.Iterator;
  */
 public class YearFilter implements Filter{
 
-    public ArrayList<Book> filter() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int year = 0;
+    
+    public YearFilter(int y)
+    {
+        year = y;
     }
     
-//     /**
-//     * gets all the books in the library of a specific year of publication
-//     * @param year used for filter
-//     * @return the filtered list of books
-//     */
-//    int year;
-//    ArrayList<Book> list = new ArrayList<Book>();
-//    list = Catalogue.lib;
-//    
-//    @Override
-//    public ArrayList<Book> filter()
-//    {
-//        //used to store the filtered list of books
-//        ArrayList<Book> filtered = new ArrayList<Book>();
-//        //checks the year_of_pub of each Book in the Library
-//        for (Book book : Catalogue.lib.books) {
-//            if(book.year_of_pub == year)
-//            {
-//                filtered.add(book);
-//            }
-//        }
-//        return filtered;
-//    }
+    public ArrayList<Book> filter(ArrayList<Book> bookList) {
+        
+        if(year!=0)
+        {
+            //used to store the filtered list of books
+            ArrayList<Book> filtered = new ArrayList<Book>();
+            //checks the year_of_pub of each Book in the Library
+            for (Book book : bookList) {
+                if (book.year_of_pub == year) {
+                    filtered.add(book);
+                }
+            }
+            return filtered;
+        }
+        return bookList;
+    }
 }

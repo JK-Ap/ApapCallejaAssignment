@@ -12,25 +12,25 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class AuthorFilter implements Filter {
+public class TitleFilter implements Filter{
+
+    public String title;
     
-    public String author;
-    
-    public AuthorFilter(String a)
+    public TitleFilter(String t)
     {
-        author = a;
+        title = t;
     }
     
     @Override
     public ArrayList<Book> filter(ArrayList<Book> bookList) {
         
-        if(!author.isEmpty())
+        if(!title.isEmpty())
         {
             //used to store the filtered list of books
             ArrayList<Book> filtered = new ArrayList<Book>();
             //checks the title of each Book in the Library
             for (Book book : bookList) {
-                if (book.author.toLowerCase().contains(author.toLowerCase())) {
+                if (book.title.toLowerCase().contains(title.toLowerCase())) {
                     filtered.add(book);
                 }
             }

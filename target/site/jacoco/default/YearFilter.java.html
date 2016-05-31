@@ -5,40 +5,35 @@
  */
 
 import java.util.ArrayList;
-import java.util.Iterator;
 /*
 /**
  *
  * @author User
  */
-<span class="nc" id="L14">public class YearFilter implements Filter{</span>
+public class YearFilter implements Filter{
 
-    public ArrayList&lt;Book&gt; filter() {
-<span class="nc" id="L17">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
-    }
+<span class="fc" id="L15">    public int year = 0;</span>
     
-//     /**
-//     * gets all the books in the library of a specific year of publication
-//     * @param year used for filter
-//     * @return the filtered list of books
-//     */
-//    int year;
-//    ArrayList&lt;Book&gt; list = new ArrayList&lt;Book&gt;();
-//    list = Catalogue.lib;
-//    
-//    @Override
-//    public ArrayList&lt;Book&gt; filter()
-//    {
-//        //used to store the filtered list of books
-//        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();
-//        //checks the year_of_pub of each Book in the Library
-//        for (Book book : Catalogue.lib.books) {
-//            if(book.year_of_pub == year)
-//            {
-//                filtered.add(book);
-//            }
-//        }
-//        return filtered;
-//    }
+    public YearFilter(int y)
+<span class="fc" id="L18">    {</span>
+<span class="fc" id="L19">        year = y;</span>
+<span class="fc" id="L20">    }</span>
+    
+    public ArrayList&lt;Book&gt; filter(ArrayList&lt;Book&gt; bookList) {
+        
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if(year!=0)</span>
+        {
+            //used to store the filtered list of books
+<span class="fc" id="L27">            ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
+            //checks the year_of_pub of each Book in the Library
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            for (Book book : bookList) {</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">                if (book.year_of_pub == year) {</span>
+<span class="fc" id="L31">                    filtered.add(book);</span>
+                }
+<span class="fc" id="L33">            }</span>
+<span class="fc" id="L34">            return filtered;</span>
+        }
+<span class="fc" id="L36">        return bookList;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

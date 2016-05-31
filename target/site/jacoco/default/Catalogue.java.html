@@ -44,66 +44,72 @@ public class Catalogue
 <span class="fc" id="L44">        return lib.books;</span>
     }
     
-    /**
-     * gets all the books in the Library whose title contains a specific string
-     * @param title string to be used to compare
-     * @return the filtered ArrayList of books
-     */
-    public ArrayList&lt;Book&gt; searchByTitle(String title)
+    public ArrayList&lt;Book&gt; searchForBooks(CompoundFilter cf)
     {
-        //used to store the filtered list of books
-<span class="fc" id="L55">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
-        //checks the title of each Book in the Library
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        for(Book book: lib.books)</span>
-        {
-<span class="fc bfc" id="L59" title="All 2 branches covered.">            if(book.title.toLowerCase().contains(title.toLowerCase()))</span>
-            {
-<span class="fc" id="L61">                filtered.add(book);</span>
-            }
-<span class="fc" id="L63">        }</span>
-<span class="fc" id="L64">        return filtered;</span>
+<span class="fc" id="L49">        return cf.callAuthorFilter(cf.callGenreFilter(cf.callNameFilter(cf.callYearFilter(lib.books))));</span>
     }
     
-    /**
-     * gets all the books in the library of a specific Genre
-     * @param g Genre object to be used
-     * @return the filtered list of books
-     */
-    public ArrayList&lt;Book&gt; searchByGenre(Genre g)
-    {
-        //used to store the filtered list of books
-<span class="fc" id="L75">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
-        //checks the Genre of each Book in the Library
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        for(Book book: lib.books)</span>
-        {
-<span class="fc bfc" id="L79" title="All 2 branches covered.">            if(book.genre == g)</span>
-            {
-<span class="fc" id="L81">                filtered.add(book);</span>
-            }
-<span class="fc" id="L83">        }</span>
-<span class="fc" id="L84">        return filtered;</span>
-    }
-    
-    /**
-     * gets all the books in the library of a specific year of publication
-     * @param year used for filter
-     * @return the filtered list of books
-     */
-    public ArrayList&lt;Book&gt; searchByYearOfPublication(int year)
-    {
-        //used to store the filtered list of books
-<span class="fc" id="L95">        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
-        //checks the year_of_pub of each Book in the Library
-<span class="fc bfc" id="L97" title="All 2 branches covered.">        for(Book book: lib.books)</span>
-        {
-<span class="fc bfc" id="L99" title="All 2 branches covered.">            if(book.year_of_pub == year)</span>
-            {
-<span class="fc" id="L101">                filtered.add(book);</span>
-            }
-<span class="fc" id="L103">        }</span>
-<span class="fc" id="L104">        return filtered;</span>
-    }
-    
+//    
+//    /**
+//     * gets all the books in the Library whose title contains a specific string
+//     * @param title string to be used to compare
+//     * @return the filtered ArrayList of books
+//     */
+//    public ArrayList&lt;Book&gt; searchByTitle(String title)
+//    {
+//        //used to store the filtered list of books
+//        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();
+//        //checks the title of each Book in the Library
+//        for(Book book: lib.books)
+//        {
+//            if(book.title.toLowerCase().contains(title.toLowerCase()))
+//            {
+//                filtered.add(book);
+//            }
+//        }
+//        return filtered;
+//    }
+//    
+//    /**
+//     * gets all the books in the library of a specific Genre
+//     * @param g Genre object to be used
+//     * @return the filtered list of books
+//     */
+//    public ArrayList&lt;Book&gt; searchByGenre(Genre g)
+//    {
+//        //used to store the filtered list of books
+//        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();
+//        //checks the Genre of each Book in the Library
+//        for(Book book: lib.books)
+//        {
+//            if(book.genre == g)
+//            {
+//                filtered.add(book);
+//            }
+//        }
+//        return filtered;
+//    }
+//    
+//    /**
+//     * gets all the books in the library of a specific year of publication
+//     * @param year used for filter
+//     * @return the filtered list of books
+//     */
+//    public ArrayList&lt;Book&gt; searchByYearOfPublication(int year)
+//    {
+//        //used to store the filtered list of books
+//        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();
+//        //checks the year_of_pub of each Book in the Library
+//        for(Book book: lib.books)
+//        {
+//            if(book.year_of_pub == year)
+//            {
+//                filtered.add(book);
+//            }
+//        }
+//        return filtered;
+//    }
+//    
 //    public ArrayList&lt;Book&gt; searchForBooks(Filter f) {
 //        
 //        ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();

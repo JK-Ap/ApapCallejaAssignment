@@ -12,12 +12,33 @@ import java.util.ArrayList;
  *
  * @author User
  */
-<span class="nc" id="L15">public class AuthorFilter implements Filter {</span>
+public class AuthorFilter implements Filter {
     
-    String author;
-
-    public ArrayList&lt;Book&gt; filter() {
-<span class="nc" id="L20">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
+    public String author;
+    
+    public AuthorFilter(String a)
+<span class="fc" id="L20">    {</span>
+<span class="fc" id="L21">        author = a;</span>
+<span class="fc" id="L22">    }</span>
+    
+    @Override
+    public ArrayList&lt;Book&gt; filter(ArrayList&lt;Book&gt; bookList) {
+        
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if(!author.isEmpty())</span>
+        {
+            //used to store the filtered list of books
+<span class="fc" id="L30">            ArrayList&lt;Book&gt; filtered = new ArrayList&lt;Book&gt;();</span>
+            //checks the title of each Book in the Library
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            for (Book book : bookList) {</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">                if (book.author.toLowerCase().contains(author.toLowerCase())) {</span>
+<span class="fc" id="L34">                    filtered.add(book);</span>
+                }
+<span class="fc" id="L36">            }</span>
+<span class="fc" id="L37">            return filtered;</span>
+        }
+        else
+<span class="fc" id="L40">            return bookList;</span>
     }
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

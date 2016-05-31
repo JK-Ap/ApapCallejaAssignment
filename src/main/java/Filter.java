@@ -12,5 +12,5 @@ import java.util.ArrayList;
  * @author User
  */
 public interface Filter {
-    public ArrayList<Book> filter();
+    public ArrayList<Book> filter(ArrayList<Book> bookList);
 }
