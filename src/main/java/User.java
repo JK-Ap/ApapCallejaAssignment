@@ -31,32 +31,28 @@ public class User {
     }
 
     public boolean Update(Book b) {
-        try {
-            SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
-            Date date1 = myFormat.parse(Calendar.getInstance().getTime().toString());
 
-            for (Date each_date : this.dates) {
-                long diff = date1.getTime() - each_date.getTime();
-                if (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) > 28) {
-                    return false;
-                }
-            }
-            //user must have not more than 3 books
-            if (this.list.size() > 2) {
+        Date date1 = Calendar.getInstance().getTime();
+
+        for (Date each_date : this.dates) {
+            long diff = date1.getTime() - each_date.getTime();
+            if (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) > 28) {
                 return false;
             }
-
-            //each date when compared to the current date must be <4weeks
-            //otherwise it is added to the user's ArrayLists
-            this.list.add(b);
-            this.dates.add(date1);
-            //the book is set to loaned
-            b.isLoaned = true;
-            return true;
-        } 
-        catch (ParseException e) 
-        {
         }
-        return false;
+
+        //user must have not more than 3 books
+        if (this.list.size() > 2) {
+            return false;
+        }
+
+        //each date when compared to the current date must be <4weeks
+        //otherwise it is added to the user's ArrayLists
+        this.list.add(b);
+        this.dates.add(date1);
+        //the book is set to loaned
+        b.isLoaned = true;
+        return true;
+
     }
 }

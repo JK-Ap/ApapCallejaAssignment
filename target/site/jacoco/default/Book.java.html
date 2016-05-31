@@ -44,27 +44,26 @@ public class Book
      */
     public boolean RegisterInterest(User u)
     {
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(u.list.contains(this))</span>
-<span class="nc" id="L48">            return false;</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">        if(!this.isLoaned)</span>
-<span class="nc" id="L50">            return false;</span>
-<span class="nc" id="L51">        this.queueOfUsers.add(u);</span>
-<span class="nc" id="L52">        return true;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if(u.list.contains(this))</span>
+<span class="fc" id="L48">            return false;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if(!this.isLoaned)</span>
+<span class="fc" id="L50">            return false;</span>
+<span class="fc" id="L51">        this.queueOfUsers.add(u);</span>
+<span class="fc" id="L52">        return true;</span>
     }
     
     public boolean NotifyQueue()
     {
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if(queueOfUsers.isEmpty())</span>
-<span class="nc" id="L58">            return false;</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">        if(queueOfUsers.get(0).Update(this))</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if(queueOfUsers.isEmpty())</span>
+<span class="fc" id="L58">            return false;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if(queueOfUsers.get(0).Update(this))</span>
         {
-<span class="nc" id="L61">            isLoaned = true;</span>
-<span class="nc" id="L62">            loaned = queueOfUsers.get(0);</span>
-<span class="nc" id="L63">            queueOfUsers.remove(queueOfUsers.get(0));</span>
-<span class="nc" id="L64">            return true;</span>
+<span class="fc" id="L61">            loaned = queueOfUsers.get(0);</span>
+<span class="fc" id="L62">            queueOfUsers.remove(queueOfUsers.get(0));</span>
+<span class="fc" id="L63">            return true;</span>
         }
         else
-<span class="nc" id="L67">            return false;</span>
+<span class="fc" id="L66">            return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

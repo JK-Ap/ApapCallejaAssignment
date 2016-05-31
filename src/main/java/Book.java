@@ -58,7 +58,6 @@ public class Book
             return false;
         if(queueOfUsers.get(0).Update(this))
         {
-            isLoaned = true;
             loaned = queueOfUsers.get(0);
             queueOfUsers.remove(queueOfUsers.get(0));
             return true;

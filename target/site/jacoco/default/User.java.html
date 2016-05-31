@@ -31,33 +31,29 @@ public class User {
 <span class="fc" id="L31">    }</span>
 
     public boolean Update(Book b) {
-        try {
-<span class="nc" id="L35">            SimpleDateFormat myFormat = new SimpleDateFormat(&quot;dd MM yyyy&quot;);</span>
-<span class="nc" id="L36">            Date date1 = myFormat.parse(Calendar.getInstance().getTime().toString());</span>
 
-<span class="nc bnc" id="L38" title="All 2 branches missed.">            for (Date each_date : this.dates) {</span>
-<span class="nc" id="L39">                long diff = date1.getTime() - each_date.getTime();</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">                if (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) &gt; 28) {</span>
-<span class="nc" id="L41">                    return false;</span>
-                }
-<span class="nc" id="L43">            }</span>
-            //user must have not more than 3 books
-<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (this.list.size() &gt; 2) {</span>
-<span class="nc" id="L46">                return false;</span>
+<span class="fc" id="L35">        Date date1 = Calendar.getInstance().getTime();</span>
+
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (Date each_date : this.dates) {</span>
+<span class="fc" id="L38">            long diff = date1.getTime() - each_date.getTime();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) &gt; 28) {</span>
+<span class="fc" id="L40">                return false;</span>
             }
+<span class="fc" id="L42">        }</span>
 
-            //each date when compared to the current date must be &lt;4weeks
-            //otherwise it is added to the user's ArrayLists
-<span class="nc" id="L51">            this.list.add(b);</span>
-<span class="nc" id="L52">            this.dates.add(date1);</span>
-            //the book is set to loaned
-<span class="nc" id="L54">            b.isLoaned = true;</span>
-<span class="nc" id="L55">            return true;</span>
-        } 
-<span class="nc" id="L57">        catch (ParseException e) </span>
-        {
+        //user must have not more than 3 books
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (this.list.size() &gt; 2) {</span>
+<span class="fc" id="L46">            return false;</span>
         }
-<span class="nc" id="L60">        return false;</span>
+
+        //each date when compared to the current date must be &lt;4weeks
+        //otherwise it is added to the user's ArrayLists
+<span class="fc" id="L51">        this.list.add(b);</span>
+<span class="fc" id="L52">        this.dates.add(date1);</span>
+        //the book is set to loaned
+<span class="fc" id="L54">        b.isLoaned = true;</span>
+<span class="fc" id="L55">        return true;</span>
+
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

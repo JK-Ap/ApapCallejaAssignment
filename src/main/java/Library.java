@@ -199,6 +199,11 @@ public class Library
             }
         }
         returned_book.isLoaned = false;
+        
+        //book will attempt to be loaned to the next person in the queue
+        if(returned_book.NotifyQueue())
+            System.out.println("Book has been given to someone else");
+        
         return true;
     }
 }

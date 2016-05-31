@@ -1,10 +1,10 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Dummy,default,User,63,25,6,0,15,8,4,1,1,1
-Dummy,default,Book,55,32,8,0,14,11,6,1,2,1
+Dummy,default,User,0,77,0,6,0,20,0,5,0,2
+Dummy,default,Book,0,84,0,8,0,24,0,7,0,3
 Dummy,default,NameFilter,8,0,0,0,2,0,2,0,2,0
 Dummy,default,Catalogue,0,106,0,14,0,27,0,15,0,8
 Dummy,default,GenreFilter,8,0,0,0,2,0,2,0,2,0
 Dummy,default,YearFilter,8,0,0,0,2,0,2,0,2,0
-Dummy,default,Library,8,264,4,32,3,64,4,21,0,7
+Dummy,default,Library,6,272,2,36,3,66,2,24,0,7
 Dummy,default,Genre,0,9,0,0,0,4,0,1,0,1
 Dummy,default,AuthorFilter,8,0,0,0,2,0,2,0,2,0

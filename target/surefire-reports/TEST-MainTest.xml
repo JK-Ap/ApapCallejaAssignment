@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.128" errors="0" skipped="0" tests="26" name="MainTest">
+<testsuite failures="0" time="0.137" errors="0" skipped="0" tests="35" name="MainTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_51\jre\bin"/>
@@ -61,25 +61,33 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.003" classname="MainTest" name="testGetBooks"/>
-  <testcase time="0.008" classname="MainTest" name="testReturnOfANonAddedBook"/>
-  <testcase time="0.001" classname="MainTest" name="testLoanForOverdueBooks"/>
-  <testcase time="0" classname="MainTest" name="testDuplicateGenre"/>
+  <testcase time="0.013" classname="MainTest" name="testCorrectRegister"/>
+  <testcase time="0" classname="MainTest" name="testGetBooks"/>
+  <testcase time="0" classname="MainTest" name="testReturnOfANonAddedBook"/>
+  <testcase time="0" classname="MainTest" name="testLoanForOverdueBooks"/>
+  <testcase time="0.001" classname="MainTest" name="testDuplicateGenre"/>
+  <testcase time="0" classname="MainTest" name="testIncorrectRegisterNotLoaned"/>
   <testcase time="0" classname="MainTest" name="testCorrectGenre"/>
-  <testcase time="0.001" classname="MainTest" name="testCatalogueConstructor"/>
-  <testcase time="0" classname="MainTest" name="testGetBooksByGenre"/>
+  <testcase time="0" classname="MainTest" name="testCatalogueConstructor"/>
+  <testcase time="0.001" classname="MainTest" name="testGetBooksByGenre"/>
   <testcase time="0" classname="MainTest" name="testGetBooksByTitle"/>
+  <testcase time="0" classname="MainTest" name="testCorrectNotifyQueue"/>
+  <testcase time="0.001" classname="MainTest" name="testIncorrectUpdateMaxBooksWithdrawn"/>
   <testcase time="0" classname="MainTest" name="testBookConstructor"/>
-  <testcase time="0.001" classname="MainTest" name="testUserConstructor"/>
-  <testcase time="0" classname="MainTest" name="testInvalidDelete"/>
+  <testcase time="0" classname="MainTest" name="testUserConstructor"/>
+  <testcase time="0.001" classname="MainTest" name="testIncorrectNotifyQueueWithNoQueue"/>
+  <testcase time="0.001" classname="MainTest" name="testInvalidDelete"/>
+  <testcase time="0" classname="MainTest" name="testincorrectRegisterAlreadyThreeBooks"/>
   <testcase time="0" classname="MainTest" name="testDuplicateBook"/>
   <testcase time="0" classname="MainTest" name="testDuplicateUser"/>
   <testcase time="0" classname="MainTest" name="testCorrectBook"/>
   <testcase time="0" classname="MainTest" name="testCorrectLoan"/>
-  <testcase time="0.001" classname="MainTest" name="testCorrectUser"/>
+  <testcase time="0" classname="MainTest" name="testCorrectUser"/>
+  <testcase time="0" classname="MainTest" name="testIncorrectNotifyQueueWithOverdueUser"/>
   <testcase time="0" classname="MainTest" name="testLoanForExceededMaxBooks"/>
-  <testcase time="0" classname="MainTest" name="testGenreConstructor"/>
+  <testcase time="0.001" classname="MainTest" name="testGenreConstructor"/>
   <testcase time="0" classname="MainTest" name="testBookAlreadyLoaned"/>
+  <testcase time="0" classname="MainTest" name="testCorrectUpdate"/>
   <testcase time="0" classname="MainTest" name="testValidDelete"/>
   <testcase time="0.001" classname="MainTest" name="testLoanForInvalidBook"/>
   <testcase time="0" classname="MainTest" name="testLoanForInvalidUser"/>
@@ -87,4 +95,5 @@
   <testcase time="0" classname="MainTest" name="testGetBooksByYear"/>
   <testcase time="0" classname="MainTest" name="testLibraryConstructor"/>
   <testcase time="0" classname="MainTest" name="testValidReturn"/>
+  <testcase time="0" classname="MainTest" name="testIncorrectUpdateOverdue"/>
 </testsuite>
