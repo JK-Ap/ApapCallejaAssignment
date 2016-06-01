@@ -158,7 +158,8 @@ public class Library
 <span class="fc" id="L158">        to_user.dates.add(c);</span>
         //the book is set to loaned
 <span class="fc" id="L160">        book_loaned.isLoaned = true;</span>
-<span class="fc" id="L161">        return &quot;book loaned&quot;;</span>
+<span class="fc" id="L161">        book_loaned.loaned = to_user;</span>
+<span class="fc" id="L162">        return &quot;book loaned&quot;;</span>
     }   
 
     /**
@@ -170,41 +171,42 @@ public class Library
     {
         //return false if the book is not loaned or if the Book is not in the 
         //Library's lit of book
-<span class="fc bfc" id="L173" title="All 2 branches covered.">        if (!returned_book.isLoaned)</span>
+<span class="fc bfc" id="L174" title="All 2 branches covered.">        if (!returned_book.isLoaned)</span>
         {
-<span class="fc" id="L175">            System.out.println(&quot;Book is not loaned&quot;);</span>
-<span class="fc" id="L176">            return false;</span>
+<span class="fc" id="L176">            System.out.println(&quot;Book is not loaned&quot;);</span>
+<span class="fc" id="L177">            return false;</span>
         }
-<span class="pc bpc" id="L178" title="1 of 2 branches missed.">        else if (!this.books.contains(returned_book))</span>
+<span class="pc bpc" id="L179" title="1 of 2 branches missed.">        else if (!this.books.contains(returned_book))</span>
         {
-<span class="nc" id="L180">            System.out.println(&quot;Book does not exist&quot;);</span>
-<span class="nc" id="L181">            return false;</span>
+<span class="nc" id="L181">            System.out.println(&quot;Book does not exist&quot;);</span>
+<span class="nc" id="L182">            return false;</span>
         }
         else
         {
             //checks each book for each user
             //if any of the books match, the book is removed along with its
             //respective time in the dates ArrayList
-<span class="fc bfc" id="L188" title="All 2 branches covered.">            for(User each_user: this.users)</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">            for(User each_user: this.users)</span>
             {
-<span class="fc bfc" id="L190" title="All 2 branches covered.">                for(int i =0; i&lt;each_user.list.size();i++)</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">                for(int i =0; i&lt;each_user.list.size();i++)</span>
                 {
-<span class="fc bfc" id="L192" title="All 2 branches covered.">                    if(each_user.list.get(i) == returned_book)</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">                    if(each_user.list.get(i) == returned_book)</span>
                     {
-<span class="fc" id="L194">                        each_user.list.remove(i);</span>
-<span class="fc" id="L195">                        each_user.dates.remove(i);</span>
-<span class="fc" id="L196">                        break;</span>
+<span class="fc" id="L195">                        each_user.list.remove(i);</span>
+<span class="fc" id="L196">                        each_user.dates.remove(i);</span>
+<span class="fc" id="L197">                        break;</span>
                     }
                 }
-<span class="fc" id="L199">            }</span>
+<span class="fc" id="L200">            }</span>
         }
-<span class="fc" id="L201">        returned_book.isLoaned = false;</span>
+<span class="fc" id="L202">        returned_book.isLoaned = false;</span>
+<span class="fc" id="L203">        returned_book.loaned = null;</span>
         
         //book will attempt to be loaned to the next person in the queue
-<span class="fc bfc" id="L204" title="All 2 branches covered.">        if(returned_book.NotifyQueue())</span>
-<span class="fc" id="L205">            System.out.println(&quot;Book has been given to someone else&quot;);</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        if(returned_book.NotifyQueue())</span>
+<span class="fc" id="L207">            System.out.println(&quot;Book has been given to someone else&quot;);</span>
         
-<span class="fc" id="L207">        return true;</span>
+<span class="fc" id="L209">        return true;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

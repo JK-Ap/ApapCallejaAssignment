@@ -158,6 +158,7 @@ public class Library
         to_user.dates.add(c);
         //the book is set to loaned
         book_loaned.isLoaned = true;
+        book_loaned.loaned = to_user;
         return "book loaned";
     }   
 
@@ -199,6 +200,7 @@ public class Library
             }
         }
         returned_book.isLoaned = false;
+        returned_book.loaned = null;
         
         //book will attempt to be loaned to the next person in the queue
         if(returned_book.NotifyQueue())

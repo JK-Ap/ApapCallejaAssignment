@@ -22,10 +22,13 @@ public class MainTest
     @Before
     public void setUp() 
     {
+        //initial setup of the system which will be used to test constructors
+        //are working 
         first_person = new User("Mark", 1);
         fiction = new Genre("FICTION", "a fiction book");
         first_book = new Book("Book1","Author1",fiction,1995,1,1);
         lib = new Library();
+        //catalogue instance called and its library set
         cat = Catalogue.getCatalogueInstance();
         cat.setLibrary(lib);
     }
@@ -39,6 +42,9 @@ public class MainTest
         lib = null;
     }
    
+    /**
+     * Testing that book constructor values match initial book
+     */
     @Test
     public void testBookConstructor()
     {
@@ -52,6 +58,9 @@ public class MainTest
         assertEquals(null,first_book.loaned); 
     }
     
+    /**
+     * Testing that Genre constructor values match initial Genre
+     */
     @Test
     public void testGenreConstructor()
     {
@@ -59,6 +68,9 @@ public class MainTest
         assertEquals("a fiction book", fiction.desc);
     }
     
+    /**
+     * Testing that User constructor values match initial User
+     */
     @Test
     public void testUserConstructor()
     {
@@ -68,6 +80,9 @@ public class MainTest
         assertEquals(new ArrayList<Date>(),first_person.dates);
     }
     
+    /**
+     * Testing that Library constructor values match initial Library
+     */
     @Test
     public void testLibraryConstructor()
     {
@@ -76,6 +91,9 @@ public class MainTest
         assertEquals(new ArrayList<User>(), lib.users);
     }
     
+    /**
+     * Testing that Catalogue singleton values match initial Catalogue
+     */
     @Test
     public void testCatalogueConstructor()
     {
@@ -94,6 +112,7 @@ public class MainTest
     @Test
     /**
      * Testing a duplicate id entry in addUser() by checking the return type of addUser() is false
+     * the second time
      */
     public void testDuplicateUser()
     {
@@ -156,6 +175,7 @@ public class MainTest
     @Test
     /**
      * Testing adding a book with duplicate id by checking that the return type is false
+     * the second time
      */
     public void testDuplicateBook()
     {
@@ -175,7 +195,8 @@ public class MainTest
     
     @Test
     /**
-     * Testing Catalogue searchForBooks() filtering by title only
+     * Testing Catalogue searchForBooks() filtering by title only by comparing
+     * the expected result with a hard coded list of expected results
      */
     public void testGetBooksByTitle()
     {     
@@ -204,7 +225,8 @@ public class MainTest
     
     @Test
     /**
-     * Testing Catalogue searchForBooks() filtering by author only
+     * Testing Catalogue searchForBooks() filtering by author only by comparing
+     * the expected result with a hard coded list of expected results
      */
     public void testGetBooksByAuthor()
     {     
@@ -233,7 +255,8 @@ public class MainTest
   
     @Test
     /**
-     * Testing Catalogue searchForBooks() filtering by genre and year
+     * Testing Catalogue searchForBooks() filtering by genre and year by comparing
+     * the expected result with a hard coded list of expected results
      */
     public void testGetBooksByGenreAndYear()
     {     
@@ -263,7 +286,9 @@ public class MainTest
     
     @Test
     /**
-     * Testing Catalogue searchForBooks() filtering by genre, year, title and author
+     * Testing Catalogue searchForBooks() filtering by genre, year, title 
+     * and author by comparing
+     * the expected result with a hard coded list of expected results
      */
     public void testComplexFilter()
     {     
@@ -306,6 +331,8 @@ public class MainTest
     @Test
     /**
      * Testing Library loanBookTo by checking its string return value
+     * isLoaned should be true and the Loaned attribute for the book should refer
+     * to this user
      */
     public void testCorrectLoan()
     {     
@@ -320,6 +347,8 @@ public class MainTest
         {
             Date date1 = myFormat.parse(inputString1);
             assertEquals("book loaned", lib.loanBookTo(book1, user1, date1));
+            assertEquals(user1,book1.loaned);
+            assertEquals(true,book1.isLoaned);
         }
         catch (ParseException e) 
         {
@@ -330,6 +359,7 @@ public class MainTest
     /**
      * Testing Library loanBookTo for a book that is not in the library
      * this is done by checking the return value of the function
+     * book details should not be updated
      */
     public void testLoanForInvalidBook()
     {     
@@ -343,6 +373,8 @@ public class MainTest
         {
             Date date1 = myFormat.parse(inputString1);
             assertEquals("Book does not exist", lib.loanBookTo(book1, user1, date1));
+            assertEquals(null,book1.loaned);
+            assertEquals(false,book1.isLoaned);
         }
         catch (ParseException e) 
         {
@@ -354,6 +386,7 @@ public class MainTest
     /**
      * Testing Library loanBookTo for a user that is not in the library
      * this is done by checking the return value of the function
+     * book details should not be updated
      */
     public void testLoanForInvalidUser()
     {     
@@ -367,6 +400,8 @@ public class MainTest
         {
             Date date1 = myFormat.parse(inputString1);
             assertEquals("User does not exist", lib.loanBookTo(book1, user1, date1));
+            assertEquals(null,book1.loaned);
+            assertEquals(false,book1.isLoaned);
         }
         catch (ParseException e) 
         {
@@ -376,7 +411,8 @@ public class MainTest
     @Test
     /**
      * Tests a loanBookTo() for a user that has already loaned 3 books
-     * by checking the return value
+     * by checking the return value of the function after 3 correct loans     
+     * book details should not be updated
      */
     public void testLoanForExceededMaxBooks()
     {     
@@ -400,6 +436,8 @@ public class MainTest
             assertEquals("book loaned",lib.loanBookTo(book2, user1, date1));
             assertEquals("book loaned",lib.loanBookTo(book3, user1, date1));
             assertEquals("User has already loaned 3 books", lib.loanBookTo(book4, user1, date1));
+            assertEquals(null,book4.loaned);
+            assertEquals(false,book4.isLoaned);
         }
         catch (ParseException e) 
         {
@@ -408,7 +446,9 @@ public class MainTest
     
     @Test
     /**
-     * Tests a loanBookTo() for a user that has an overdue book
+     * Tests a loanBookTo() for a user that has an overdue book y checking the return
+     * string of the function
+     * book details should not be updated
      */
     public void testLoanForOverdueBooks()
     {     
@@ -431,6 +471,8 @@ public class MainTest
             
             Date date2 = myFormat.parse(inputString2);
             assertEquals("Overdue", lib.loanBookTo(book2, user1, date2));
+            assertEquals(null,book2.loaned);
+            assertEquals(false,book2.isLoaned);
         }
         catch (ParseException e) 
         {
@@ -438,7 +480,8 @@ public class MainTest
     }
     
     /**
-     * Tests loanBookto() for a book that is already loaned out
+     * Tests loanBookto() for a book that is already loaned out by checking the 
+     * return string of the function
      */
     @Test
     public void testBookAlreadyLoaned()
@@ -494,10 +537,11 @@ public class MainTest
         assertEquals(0,user1.list.size());
         assertEquals(0,user1.dates.size());
         assertEquals(false,book1.isLoaned);
+        assertEquals(null,book1.loaned);
     }
     
     /**
-     * Tests attempting to return a book is not added in the library lists
+     * Tests attempting to return a book that is not added in the library
      */
     @Test
     public void testReturnOfANonAddedBook()

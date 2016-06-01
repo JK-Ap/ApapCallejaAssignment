@@ -1,6 +1,3 @@
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -52,6 +49,7 @@ public class User {
         this.dates.add(date1);
         //the book is set to loaned
         b.isLoaned = true;
+        b.loaned = this;
         return true;
 
     }
