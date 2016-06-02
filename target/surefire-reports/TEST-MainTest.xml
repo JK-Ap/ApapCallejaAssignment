@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="36" failures="0" name="MainTest" time="0.271" errors="0" skipped="0">
+<testsuite tests="36" failures="0" name="MainTest" time="0.266" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_60\jre\bin"/>
@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="MainTest" name="testCorrectRegister" time="0.053"/>
+  <testcase classname="MainTest" name="testCorrectRegister" time="0.047"/>
   <testcase classname="MainTest" name="testGetBooks" time="0"/>
   <testcase classname="MainTest" name="testReturnOfANonAddedBook" time="0"/>
   <testcase classname="MainTest" name="testGetBooksByAuthor" time="0.016"/>
@@ -72,7 +72,7 @@
   <testcase classname="MainTest" name="testCatalogueConstructor" time="0"/>
   <testcase classname="MainTest" name="testGetBooksByTitle" time="0"/>
   <testcase classname="MainTest" name="testCorrectNotifyQueue" time="0"/>
-  <testcase classname="MainTest" name="testGetBooksByGenreAndYear" time="0.016"/>
+  <testcase classname="MainTest" name="testGetBooksByGenreAndYear" time="0"/>
   <testcase classname="MainTest" name="testIncorrectUpdateMaxBooksWithdrawn" time="0"/>
   <testcase classname="MainTest" name="testBookConstructor" time="0"/>
   <testcase classname="MainTest" name="testUserConstructor" time="0"/>

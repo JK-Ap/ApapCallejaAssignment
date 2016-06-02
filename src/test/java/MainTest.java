@@ -159,7 +159,10 @@ public class MainTest
     public void testDuplicateGenre()
     {
         Genre dup_genre = new Genre("FICTION","A fiction book as well");
+        Genre correct_genre = new Genre("NON-FICTION","A non-fiction book");
+        
         assertEquals(true, lib.addGenre(fiction));
+        assertEquals(true, lib.addGenre(correct_genre));
         assertEquals(false, lib.addGenre(dup_genre));
     }
     

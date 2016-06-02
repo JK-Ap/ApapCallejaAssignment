@@ -81,13 +81,13 @@ public class Library
         //checks each Genre's name
 <span class="fc bfc" id="L82" title="All 2 branches covered.">        for(Genre g : genres)</span>
         {
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">            if(newGenre.name.equalsIgnoreCase(g.name))</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">            if(newGenre.name.equalsIgnoreCase(g.name))</span>
             {
                 //returns false if the name isn't unique
 <span class="fc" id="L87">                System.out.println(&quot;Duplicate genre&quot;);</span>
 <span class="fc" id="L88">                return false;</span>
             }             
-<span class="nc" id="L90">        }</span>
+<span class="fc" id="L90">        }</span>
         //returns true if the add was successfull
 <span class="fc" id="L92">        this.genres.add(newGenre);</span>
 <span class="fc" id="L93">        System.out.println(&quot;Genre Added&quot;);</span>
