@@ -81,7 +81,7 @@ public class Library
         //checks each Genre's name
         for(Genre g : genres)
         {
-            if(g.name.equals(newGenre.name))
+            if(newGenre.name.equalsIgnoreCase(g.name))
             {
                 //returns false if the name isn't unique
                 System.out.println("Duplicate genre");
@@ -170,17 +170,18 @@ public class Library
     public boolean returnBook(Book returned_book)
     {
         //return false if the book is not loaned or if the Book is not in the 
-        //Library's lit of book
-        if (!returned_book.isLoaned)
-        {
-            System.out.println("Book is not loaned");
-            return false;
-        }
-        else if (!this.books.contains(returned_book))
+        //Library's list of book
+        
+        if (!this.books.contains(returned_book))
         {
             System.out.println("Book does not exist");
             return false;
         }
+        else if (!returned_book.isLoaned)
+        {
+            System.out.println("Book is not loaned");
+            return false;
+        }   
         else
         {
             //checks each book for each user
